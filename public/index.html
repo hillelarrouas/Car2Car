@@ -26,7 +26,7 @@
 
 <body onload="init()">
 
-<div style="position: fixed;height: 100%;width: 100%;top: 0; left: 0; padding: 15px 10px;box-sizing: border-box;" >
+<div style="width: 100%; padding: 15px 10px;box-sizing: border-box;" >
     
     <div class="Welcom">
         <div class="logo"><img src="img/logo1.png" alt="logo"></div>
@@ -36,7 +36,7 @@
             <input id="WelcomCarNumber" dir="ltr" maxlength="10" type="tel" oninput="ArrangeCarNumber()"
                 onkeyup="if (event.keyCode == 13) { event.preventDefault();CheckCar()}" autocomplete="off" />
             <div id="mes"></div>
-            <input value="איffשור" id="WelcomBt" type="button" class="Bt" onclick="CheckCar()">
+            <input value="אישור" id="WelcomBt" type="button" class="Bt" onclick="CheckCar()">
         </div>
     </div>
 </div>
@@ -46,6 +46,6 @@
         <div class="addTable"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?0"></script>
 </body>
 </html>
