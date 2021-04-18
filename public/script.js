@@ -8,7 +8,6 @@ function init(){
 // מספר רכב אליהו 36-005-54
 
 function ArrangeCarNumber() {
-    // $(".Welcom .logo img").css({ 'top': `${Number($("#WelcomCarNumber").css('height').split('p')[0])-30}px`})
     $("#mes").html("")
     let CarNumber = $("#WelcomCarNumber").val().replace(/-/g, '')
     valueCarNumber = CarNumber
