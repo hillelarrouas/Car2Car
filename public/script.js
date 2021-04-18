@@ -90,7 +90,6 @@ function printingData(d) {
     }
 
 
-
     $(".addTable").html(
         `<table>
     <tr>
@@ -331,73 +330,3 @@ $("#resetInputNumber").click(function () {
 $("#WelcomCarNumber").focusout(function () {
     $("#resetInputNumber").hide();
 });
-
-
-
-
-
-
-{/* 
-<tr>
-  <td>${test(d[0].tozeret_cd)}</td>
-  <td class="key">קוד תוצר</td>
-</tr>
-<tr>
-  <td>${test(d[0].sug_degem)}</td>
-  <td class="key">סוג דגם</td>
-</tr>
-<tr>
-  <td>${test(d[0].degem_manoa)}</td>
-  <td class="key">דגם מנוע</td>
-</tr>
-
-<tr>
-  <td>${test(d[0].degem_cd)}</td>
-  <td class="key">קוד דגם</td>
-</tr>
-<tr>
-  <td>${test(d[0].degem_nm)}</td>
-  <td class="key">שם דגם</td>
-</tr>
-<tr>
-  <td>${test(d[0].kvutzat_zihum)}</td>
-  <td class="key">קבוצת זיהום</td>
-</tr>
-<tr>
-  <td>${test(d[0].mivchan_acharon_dt.split('T')[0]).replace(/-/g, '/ ')}</td>
-  <td class="key">מבחן טסט אחרון</td>
-</tr>
-<tr>
-  <td>${test(d[0].tokef_dt.split('T')[0]).replace(/-/g, '/ ')}</td>
-  <td class="key">תוקף טסט</td>
-</tr>
-<tr>
-  <td>${test(d[0].misgeret)}</td>
-  <td class="key">מספר שילדה</td>
-</tr>
-<tr>
-  <td>${test(d[0].tzeva_rechev)}</td>
-  <td class="key">צבע רכב</td>
-</tr>
-<tr>
-  <td>${test(d[0].zmig_kidmi)}</td>
-  <td class="key">מידות צמיג קידמי</td>
-</tr>
-<tr>
-  <td>${test(d[0].zmig_ahori)}</td>
-  <td class="key">מידות צמיג אחורי</td>
-</tr>
-<tr>
-  <td>${test(d[0].sug_delek_nm)}</td>
-  <td class="key">סוג דלק</td>
-</tr>
-<tr>
-  <td>${test(d[0].horaat_rishum)}</td>
-  <td class="key">הוראת רשום</td>
-</tr>
-<tr>
-  <td>${test(d[0].tzeva_cd)}</td>
-  <td class="key">קוד צבע</td>
-</tr>
-${necha} */
-}

@@ -141,3 +141,7 @@ tr:nth-child(even) {
     opacity: 0.5;
     display: none;
 }
+
+
+@media only screen and (max-width:900px) {
+}
