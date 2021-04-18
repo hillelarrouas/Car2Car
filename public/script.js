@@ -1,8 +1,8 @@
 let valueCarNumber = 1
 
-function init(){
-    const height = `${Number($("#WelcomCarNumber").css('height').split('p')[0])/2 - Number($("#WelcomCarNumber").css('border').split('p')[0])*2}px`
-    $("#resetInputNumber").css({'top': height})
+function init() {
+    const height = `${Number($("#WelcomCarNumber").css('height').split('p')[0]) / 2 - Number($("#WelcomCarNumber").css('border').split('p')[0]) * 2}px`
+    $("#resetInputNumber").css({ 'top': height })
 }
 
 // מספר רכב אליהו 36-005-54
@@ -40,16 +40,17 @@ function ArrangeCarNumber() {
 
 
 function CheckCar() {
-
+    console.log(valueCarNumber.length)
     try {
         if (!Number(valueCarNumber)) {
             $("#mes").html('נא להזין ספרות בלבד')
         }
         else {
-            if (valueCarNumber.length < 7) {
+            if (valueCarNumber.length < 7 || valueCarNumber.length == undefined) {
                 $("#mes").html('נא להזין מספר רכב בין 7/8 ספרות')
             } else {
                 $("#mes").html('<img style="width: 45px;" src="img/gifSearch.gif" alt="Search">')
+                $("#WelcomBt").hide()
                 fetch('/getData', {
                     method: 'POST',
                     headers: {
@@ -66,6 +67,7 @@ function CheckCar() {
                             $(".cardTable").show();
                         }
                         else {
+                            $("#WelcomBt").show()
                             $("#mes").html('מספר רכב לא קיים במאגר')
                         }
                     })
@@ -82,7 +84,7 @@ $("#WelcomCarNumber").focus(function () {
         $("#resetInputNumber").css('right', '30px');
     }
     $(".Welcom .logo img").css({ 'height': '80px', 'transition': 'all 0.3s' })
-    setTimeout(function(){$('html,body').scrollTop(0);},100)
+    setTimeout(function () { $('html,body').scrollTop(0); }, 50);
 });
 
 
@@ -109,6 +111,7 @@ $("#reternWelcom").click(function () {
     $(".cardTable").hide();
     $(".Welcom").show();
     $("#WelcomCarNumber").focus()
+    $("#WelcomBt").show();
 });
 
 
