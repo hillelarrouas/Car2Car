@@ -34,18 +34,30 @@
         <div dir="ltr" style="text-align: center;position: relative; margin: auto; width: 90%; max-width: 350px;">
             <img id='resetInputNumber' src="img/icon x.png" alt="x">
             <input id="WelcomCarNumber" dir="ltr" maxlength="10" type="tel" oninput="ArrangeCarNumber()"
-                onkeyup="if (event.keyCode == 13) { event.preventDefault();CheckCar()}" autocomplete="off"/>
+                onkeyup="if (event.keyCode == 13) { event.preventDefault();CheckCar()}" autocomplete="off" value="36-005-54"/>
             <input value="המשך" id="WelcomBt" type="button" class="Bt" onclick="CheckCar()">
             <div id="WelcomWait"><img style="width: 45px;" src="img/gifSearch.gif" alt="Search"></div>
             <div id="ErrorMsg"></div>
-
         </div>
     </div>
+
+
     <div class="cardTable">
         <div class="logo"><img style="height: 80px;" src="img/logo1.png" alt="logo"></div>
-        <img id="reternWelcom" src="img/return.png" alt="חזרה">
-<div class="scooll"><img style="width: 100%;" src="img/scroll.png" alt="למעלה" onclick="$('html, body').animate({ scrollTop: 0 }, 250);"></div>
         <div class="addTable"></div>
+
+
+        <div style="width: 100%;position: fixed;left: 0;top: 0;">
+            <div class="cardretern">
+                <img id="reternWelcom" src="img/return.png" alt="חזרה">
+            </div>
+        </div>
+        <div style="width: 100%;position: fixed;left: 0;bottom: 0;">
+            <div class="scooll">
+                <img style="width: 45px; margin: 0 0 15px 15px; cursor: pointer;" src="img/scroll.png" alt="למעלה"
+                    onclick="$('html, body').animate({ scrollTop: 0 }, 250);">
+            </div>
+        </div>
     </div>
 
     <script src="script.js?1"></script>

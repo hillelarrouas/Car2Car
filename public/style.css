@@ -81,11 +81,12 @@ body {
     max-width: 550px;
     border-radius: 10px;
     background-color: white;
-    padding: 0 0 5px;
+    padding: 20px 0 5px;
     min-height: 500px;
     position: relative;
     display: none;
 }
+
 
 #ErrorMsg {
     color: indianred;
@@ -152,24 +153,29 @@ tr:nth-child(even) {
 
 #reternWelcom {
     width: 50px;
-    position: fixed;
-    top: 15px;
-    right: 24px;
     border-radius: 10px;
-    background-color: white;
     cursor: pointer;
     box-sizing: border-box;
     padding: 5px;
 }
 
+.cardretern{
+    background-color: rgba(255, 255, 255, 0.637);
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+    margin: auto;
+    direction: rtl;
+    
+}
+
+
 .scooll{
-    width: 50px;
-    height: 50px;
-    position: fixed;
-    bottom: 17px;
-    right: 10px;
-    background: white;
-    border-radius: 50%;
+    position: relative;
+    width: 100%;
+    max-width: 550px;
+    margin: auto;
+    direction: rtl;
     display: none;
 }
 

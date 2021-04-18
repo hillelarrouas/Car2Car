@@ -41,37 +41,41 @@ function ArrangeCarNumber() {
 function CheckCar() {
     let CarNumber = $("#WelcomCarNumber").val().replace(/-/g, '')
     try {
-        if (!Number(CarNumber)) {
-            $("#ErrorMsg").html('נא להזין ספרות בלבד')
-        }
-        else {
-            if (CarNumber.length < 7 || CarNumber.length == undefined) {
-                $("#ErrorMsg").html('נא להזין מספר רכב בין 7/8 ספרות')
-            } else {
-                $("#ErrorMsg").html('')
-                $("#WelcomBt").hide()
-                $("#WelcomWait").show()
-                fetch('/getData', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ valueCarNumber:CarNumber })
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        $("#WelcomWait").hide()
-                        if (data) {
-                            printingData(data)
-                            $(".Welcom .logo img").css({ 'height': '200px', 'transition': 'all 0s' })
-                            $(".Welcom").hide();
-                            $(".cardTable").show();
-                        }
-                        else {
-                            $("#WelcomBt").show()
-                            $("#ErrorMsg").html('מספר רכב לא קיים במאגר')
-                        }
+        if (CarNumber.length == 0) {
+            $("#ErrorMsg").html('נא להקליד מספר רכב')
+        } else {
+            if (!Number(CarNumber)) {
+                $("#ErrorMsg").html('נא להזין <b>מספר רכב</b> בספרות בלבד')
+            }
+            else {
+                if (CarNumber.length < 7 || CarNumber.length == undefined) {
+                    $("#ErrorMsg").html('נא להזין מספר רכב בין 7 <b>או</b> 8 ספרות')
+                } else {
+                    $("#ErrorMsg").html('')
+                    $("#WelcomBt").hide()
+                    $("#WelcomWait").show()
+                    fetch('/getData', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ valueCarNumber: CarNumber })
                     })
+                        .then(res => res.json())
+                        .then(data => {
+                            $("#WelcomWait").hide()
+                            if (data) {
+                                printingData(data)
+                                $(".Welcom .logo img").css({ 'height': '200px', 'transition': 'all 0s' })
+                                $(".Welcom").hide();
+                                $(".cardTable").show();
+                            }
+                            else {
+                                $("#WelcomBt").show()
+                                $("#ErrorMsg").html('מספר רכב לא קיים במאגר')
+                            }
+                        })
+                }
             }
         }
     } catch (err) {
@@ -117,11 +121,11 @@ $("#reternWelcom").click(function () {
 
 });
 
-$(window , 'body').on('scroll', function() {
-    if ($('html,body').scrollTop() >=300){
-        $(".scooll").show(150)
-    }else{
-        $(".scooll").hide(150)
+$(window, 'body').on('scroll', function () {
+    if ($('html,body').scrollTop() >= 300) {
+        $(".scooll").show(50)
+    } else {
+        $(".scooll").hide(50)
     }
 });
 
@@ -141,46 +145,31 @@ function printingData(d) {
             <td class="key">תו נכה - סוג תו</td>
        </tr>
        <tr>
-            <td>${x[6]}${x[7]}/ ${x[4]}${x[5]}/ ${x[0]}${x[1]}${x[2]}${x[3]}</td>
+            <td>${x[6]}${x[7]}/${x[4]}${x[5]}/${x[0]}${x[1]}${x[2]}${x[3]}</td>
             <td class="key">תאריך הפקת תו</td>
        </tr>`
     }
 
 
     $(".addTable").html(
-        `<table>
-    <tr>
-        <td>${test(d[0].mispar_rechev)}</td>
-        <td class="key">מספר רכב</td>
-    </tr>
-    <tr>
-      <td>${test(d[0].tozeret_nm)}</td>
-      <td class="key">יצרן</td>
-    </tr>
-    <tr>
-       <td>${test(d[0].kinuy_mishari)}</td>
-       <td class="key">שם מסחרי</td>
-    </tr>
-    <tr>
-       <td>${test(d[1].merkav)}</td>
-       <td class="key">מרכב</td>
-    </tr>
+        `<div style="text-align: center;font-size: x-large;padding: 10px 0;font-weight: 600;text-shadow: 2px 2px 9px rgb(254 250 220);">${test(d[0].kinuy_mishari)} ${test(d[0].tozeret_nm)}</div>
+        <table>
     <tr>
         <td>${test(d[0].shnat_yitzur)}</td>
         <td class="key">שנת יצור</td>
     </tr>
+    <tr>
+      <td>${test(d[1].nefah_manoa)}</td>
+      <td class="key">נפח מנוע</td>
+   </tr>
+   <tr>
+       <td>${test(d[1].koah_sus)}</td>
+       <td class="key">כח סוס</td>
+   </tr>
    <tr>
      <td>${test(d[0].ramat_gimur)}</td>
      <td class="key">רמת גימור</td>
   </tr>
-   <tr>
-     <td>${test(d[1].nefah_manoa)}</td>
-     <td class="key">נפח מנוע</td>
-   </tr>
-    <tr>
-        <td>${test(d[1].koah_sus)}</td>
-        <td class="key">כח סוס</td>
-    </tr>
     <tr>
       <td style="direction: rtl;">${test(d[1].mishkal_kolel)} ק"ג</td>
       <td class="key">משקל כולל</td>
@@ -201,7 +190,6 @@ function printingData(d) {
 
 
 <div style="text-align: right;padding: 5px 30px;font-size: 22px;font-weight: 600;">:אבזור ובטיחות</div>
-
 
 <table>
   <tr>
@@ -321,11 +309,11 @@ function printingData(d) {
   <td class="key">קבוצת זיהום</td>
 </tr>
 <tr>
-<td><div style="direction: rtl;">${test(d[0].mivchan_acharon_dt.split('T')[0]).replace(/-/g, '/ ')}</div></td>
+<td><div style="direction: rtl;">${test(d[0].mivchan_acharon_dt.split('T')[0]).replace(/-/g, '/')}</div></td>
   <td class="key">מבחן טסט אחרון</td>
 </tr>
 <tr>
-<td><div style="direction: rtl;">${test(d[0].tokef_dt.split('T')[0]).replace(/-/g, '/ ')}</div></td>
+<td><div style="direction: rtl;">${test(d[0].tokef_dt.split('T')[0]).replace(/-/g, '/')}</div></td>
   <td class="key">תוקף טסט</td>
 </tr>
 <tr>
@@ -367,3 +355,22 @@ function test(text) {
     return text == null ? '' : text
 }
 
+
+
+
+{/* <tr>
+<td>${test(d[0].mispar_rechev)}</td>
+<td class="key">מספר רכב</td>
+</tr>
+<tr>
+<td>${test(d[0].tozeret_nm)}</td>
+<td class="key">יצרן</td>
+</tr>
+<tr>
+<td>${test(d[0].kinuy_mishari)}</td>
+<td class="key">שם מסחרי</td>
+</tr>
+<tr>
+<td>${test(d[1].merkav)}</td>
+<td class="key">מרכב</td>
+</tr> */}
