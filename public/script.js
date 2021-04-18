@@ -61,7 +61,7 @@ function CheckCar() {
                     .then(data => {
                         if (data) {
                             printingData(data)
-                            $(".Welcom .logo img").css({ 'height': '300px', 'transition': 'all 0.3s' })
+                            $(".Welcom .logo img").css({ 'height': '200px', 'transition': 'all 0.3s' })
                             $(".Welcom").hide();
                             $(".cardTable").show();
                         }
@@ -81,7 +81,7 @@ $("#WelcomCarNumber").focus(function () {
     if ($("#WelcomCarNumber").val().length > 0) {
         $("#resetInputNumber").css('right', '30px');
     }
-    $(".Welcom .logo img").css({ 'height': '130px', 'transition': 'all 0.3s' })
+    $(".Welcom .logo img").css({ 'height': '80px', 'transition': 'all 0.3s' })
 });
 
 

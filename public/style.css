@@ -19,10 +19,11 @@ body {
 
 .logo {
     text-align: center;
+    padding: 30px;
 }
 
 .Welcom .logo img {
-    height: 300px;
+    height: 200px;
     transition: all 0.3s;
 }
 
