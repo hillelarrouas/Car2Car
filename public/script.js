@@ -12,9 +12,9 @@ function ArrangeCarNumber() {
     let CarNumber = $("#WelcomCarNumber").val().replace(/-/g, '')
     valueCarNumber = CarNumber
     if (CarNumber.length > 0) {
-        $("#resetInputNumber").css('right', '30px');
+        $("#resetInputNumber").show()
     } else {
-        $("#resetInputNumber").css('right', '-100vw');
+        $("#resetInputNumber").hide()
     }
     if (isNaN(Number(CarNumber))) {
         $("#WelcomCarNumber").css({ 'color': 'red', 'border-color': 'red' })
@@ -40,7 +40,6 @@ function ArrangeCarNumber() {
 
 
 function CheckCar() {
-    ArrangeCarNumber()
     console.log(valueCarNumber.length)
     try {
         if (!Number(valueCarNumber)) {
@@ -97,16 +96,17 @@ $("#resetInputNumber").click(function () {
     $("#WelcomCarNumber").val('')
     $("#WelcomCarNumber").focus()
     $("#WelcomCarNumber").css({ 'color': 'black', 'border-color': 'black' })
-    $("#resetInputNumber").css('right', '-100vw')
+    $("#resetInputNumber").hide()
 });
 
 
 $("#WelcomCarNumber").focusout(function () {
-    setTimeout(function () { $("#resetInputNumber").css('right', '-100vw'); }, 100);
+    setTimeout(function () { $("#resetInputNumber").hide() }, 100);
 });
 
 
 $("#reternWelcom").click(function () {
+    valueCarNumber = 1
     $("#ErrorMsg").html('')
     $("#WelcomCarNumber").val('')
     $("#WelcomCarNumber").focus()

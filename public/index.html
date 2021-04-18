@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="rgb(238, 238, 238)" />
     <title>Car2Car</title>
-    
+
     <link rel="apple-touch-icon" sizes="76x76" href="img/logo/Logo_76.png" />
     <link rel="apple-touch-icon" sizes="120x120" href="img/logo/Logo_120.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="img/logo/Logo_152.png" />
@@ -20,23 +20,24 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="/img/logo1.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Assistant:400,600,700&display=swap&subset=hebrew" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Assistant:400,600,700&display=swap&subset=hebrew"
+        rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body onload="init()">
 
-    
+
     <div class="Welcom">
         <div class="logo"><img src="img/logo1.png" alt="logo"></div>
         <div class='text'>הקלד מספר רכב</div>
         <div dir="ltr" style="text-align: center;position: relative; margin: auto; width: 90%; max-width: 350px;">
             <img id='resetInputNumber' src="img/icon x.png" alt="x">
             <input id="WelcomCarNumber" dir="ltr" maxlength="10" type="tel" oninput="ArrangeCarNumber()"
-                onkeyup="if (event.keyCode == 13) { event.preventDefault();CheckCar()}" autocomplete="off" />
+                onkeyup="if (event.keyCode == 13) { event.preventDefault();CheckCar()}" autocomplete="off" value="36-005-54"/>
             <input value="המשך" id="WelcomBt" type="button" class="Bt" onclick="CheckCar()">
-            <div id="WelcomWait" style="display: none;text-align: center;margin-top: 10px;"><img style="width: 45px;" src="img/gifSearch.gif" alt="Search"></div>
-            <div id="ErrorMsg" style="color: indianred;padding: 10px;font-weight: 600;font-size: larger;"></div>
+            <div id="WelcomWait"><img style="width: 45px;" src="img/gifSearch.gif" alt="Search"></div>
+            <div id="ErrorMsg"></div>
 
         </div>
     </div>
@@ -48,4 +49,5 @@
 
     <script src="script.js?1"></script>
 </body>
+
 </html>

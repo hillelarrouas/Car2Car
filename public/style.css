@@ -87,11 +87,18 @@ body {
     display: none;
 }
 
-#mes {
-    font-size: 18px;
+#ErrorMsg {
+    color: indianred;
     padding: 10px;
+    font-weight: 600;
+    font-size: larger;
 }
 
+#WelcomWait{
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+}
 
 table {
     border: 3px solid rgb(227 216 135 / 21%);
@@ -137,9 +144,10 @@ tr:nth-child(even) {
 #resetInputNumber {
     position: absolute;
     width: 30px;
-    right: -100vw;
+    right: 30px;
     cursor: pointer;
     opacity: 0.6;
+    display: none;
 }
 
 #reternWelcom {
