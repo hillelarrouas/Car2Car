@@ -1,4 +1,3 @@
-let valueCarNumber = 1
 
 function init() {
     const height = `${Number($("#WelcomCarNumber").css('height').split('p')[0]) / 2 - Number($("#WelcomCarNumber").css('border').split('p')[0]) * 2}px`
@@ -9,44 +8,43 @@ function init() {
 
 function ArrangeCarNumber() {
     $("#ErrorMsg").html("")
-    let CarNumber = $("#WelcomCarNumber").val().replace(/-/g, '')
-    valueCarNumber = CarNumber
-    if (CarNumber.length > 0) {
+    let FixedCarNumber = $("#WelcomCarNumber").val().replace(/-/g, '')
+    if (FixedCarNumber.length > 0) {
         $("#resetInputNumber").show()
     } else {
         $("#resetInputNumber").hide()
     }
-    if (isNaN(Number(CarNumber))) {
+    if (isNaN(Number(FixedCarNumber))) {
         $("#WelcomCarNumber").css({ 'color': 'red', 'border-color': 'red' })
     } else {
         $("#WelcomCarNumber").css({ 'color': 'black', 'border-color': 'black' })
     }
-    if (CarNumber.length == 3) {
-        CarNumber = CarNumber.substring(0, 2) + "-" + CarNumber.substring(2, 3)
-    } else if (CarNumber.length == 4) {
-        CarNumber = CarNumber.substring(0, 2) + "-" + CarNumber.substring(2, 4)
-    } else if (CarNumber.length == 5) {
-        CarNumber = CarNumber.substring(0, 2) + "-" + CarNumber.substring(2, 5)
-    } else if (CarNumber.length == 6) {
-        CarNumber = CarNumber.substring(0, 2) + "-" + CarNumber.substring(2, 5) + "-" + CarNumber.substring(5, 6)
-    } else if (CarNumber.length == 7) {
-        CarNumber = CarNumber.substring(0, 2) + "-" + CarNumber.substring(2, 5) + "-" + CarNumber.substring(5, 7)
-    } else if (CarNumber.length == 8) {
-        CarNumber = CarNumber.substring(0, 3) + "-" + CarNumber.substring(3, 5) + "-" + CarNumber.substring(5, 8)
+    if (FixedCarNumber.length == 3) {
+        FixedCarNumber = FixedCarNumber.substring(0, 2) + "-" + FixedCarNumber.substring(2, 3)
+    } else if (FixedCarNumber.length == 4) {
+        FixedCarNumber = FixedCarNumber.substring(0, 2) + "-" + FixedCarNumber.substring(2, 4)
+    } else if (FixedCarNumber.length == 5) {
+        FixedCarNumber = FixedCarNumber.substring(0, 2) + "-" + FixedCarNumber.substring(2, 5)
+    } else if (FixedCarNumber.length == 6) {
+        FixedCarNumber = FixedCarNumber.substring(0, 2) + "-" + FixedCarNumber.substring(2, 5) + "-" + FixedCarNumber.substring(5, 6)
+    } else if (FixedCarNumber.length == 7) {
+        FixedCarNumber = FixedCarNumber.substring(0, 2) + "-" + FixedCarNumber.substring(2, 5) + "-" + FixedCarNumber.substring(5, 7)
+    } else if (FixedCarNumber.length == 8) {
+        FixedCarNumber = FixedCarNumber.substring(0, 3) + "-" + FixedCarNumber.substring(3, 5) + "-" + FixedCarNumber.substring(5, 8)
     }
-    $("#WelcomCarNumber").val(CarNumber)
+    $("#WelcomCarNumber").val(FixedCarNumber)
 }
 
 
 
 function CheckCar() {
-    console.log(valueCarNumber.length)
+    let CarNumber = $("#WelcomCarNumber").val().replace(/-/g, '')
     try {
-        if (!Number(valueCarNumber)) {
+        if (!Number(CarNumber)) {
             $("#ErrorMsg").html('נא להזין ספרות בלבד')
         }
         else {
-            if (valueCarNumber.length < 7 || valueCarNumber.length == undefined) {
+            if (CarNumber.length < 7 || CarNumber.length == undefined) {
                 $("#ErrorMsg").html('נא להזין מספר רכב בין 7/8 ספרות')
             } else {
                 $("#ErrorMsg").html('')
@@ -57,14 +55,14 @@ function CheckCar() {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ valueCarNumber })
+                    body: JSON.stringify({ valueCarNumber:CarNumber })
                 })
                     .then(res => res.json())
                     .then(data => {
                         $("#WelcomWait").hide()
                         if (data) {
                             printingData(data)
-                            $(".Welcom .logo img").css({ 'height': '200px', 'transition': 'all 0.3s' })
+                            $(".Welcom .logo img").css({ 'height': '200px', 'transition': 'all 0s' })
                             $(".Welcom").hide();
                             $(".cardTable").show();
                         }
@@ -106,7 +104,6 @@ $("#WelcomCarNumber").focusout(function () {
 
 
 $("#reternWelcom").click(function () {
-    valueCarNumber = 1
     $("#ErrorMsg").html('')
     $("#WelcomCarNumber").val('')
     $("#WelcomCarNumber").focus()
