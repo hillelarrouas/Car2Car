@@ -84,7 +84,7 @@ $("#WelcomCarNumber").focus(function () {
         $("#resetInputNumber").css('right', '30px');
     }
     $(".Welcom .logo img").css({ 'height': '80px', 'transition': 'all 0.3s' })
-    setTimeout(function () { $('html,body').scrollTop(0); }, 50);
+    setTimeout(function () { $('html,body').scrollTop(0); }, 1);
 });
 
 

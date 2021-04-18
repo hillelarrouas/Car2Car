@@ -12,8 +12,7 @@ body {
     max-width: 550px;
     border-radius: 10px;
     background-color: white;
-    padding:0 0 20px;
-    /* display: none; */
+    padding-bottom: 20px;
 }
 
 .logo {
@@ -142,7 +141,7 @@ tr:nth-child(even) {
     opacity: 0.6;
 }
 
-#reternWelcom{
+#reternWelcom {
     width: 40px;
     position: absolute;
     top: 5px;
@@ -153,5 +152,4 @@ tr:nth-child(even) {
 
 
 
-@media only screen and (max-width:900px) {
-}
+@media only screen and (max-width:900px) {}
