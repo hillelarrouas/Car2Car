@@ -123,9 +123,9 @@ $("#reternWelcom").click(function () {
 
 $(window, 'body').on('scroll', function () {
     if ($('html,body').scrollTop() >= 300) {
-        $(".scooll").show(50)
+        $(".scooll").show()
     } else {
-        $(".scooll").hide(50)
+        $(".scooll").hide()
     }
 });
 
@@ -135,19 +135,19 @@ function printingData(d) {
     let necha;
     if (d[2] == undefined) {
         necha = `<tr>
-        <td>אין</td>
         <td class="key">תו נכה</td>
+        <td>אין</td>
       </tr>`
     }
     else {
         const x = d[2]['TAARICH HAFAKAT TAG']
         necha = `<tr>
+        <td class="key">תו נכה - סוג תו</td>
             <td>${test(d[2]['SUG TAV']) == '01' ? 'תו נכה רגיל' : 'תג נכה על כיסא גלגלים'}</td>
-            <td class="key">תו נכה - סוג תו</td>
        </tr>
        <tr>
-            <td>${x[6]}${x[7]}/${x[4]}${x[5]}/${x[0]}${x[1]}${x[2]}${x[3]}</td>
             <td class="key">תאריך הפקת תו</td>
+            <td>${x[6]}${x[7]}/${x[4]}${x[5]}/${x[0]}${x[1]}${x[2]}${x[3]}</td>
        </tr>`
     }
 
@@ -156,191 +156,188 @@ function printingData(d) {
         `<div dir="rtl" style="text-align: center;font-size: x-large;padding: 10px 0;font-weight: 600;text-shadow: 2px 2px 9px rgb(254 250 220);"><div style='display:inline-block'>${test(d[0].tozeret_nm)}</div> <div  style='display:inline-block'>${test(d[0].kinuy_mishari)}</div> | <div  style='display:inline-block'>${test(d[0].shnat_yitzur)}</div></div>
         <table>
     <tr>
-    <td><div style="direction: rtl;">${test(d[1].nefah_manoa)} <b>סמ"ק</b></div></td>
-      <td class="key">נפח מנוע</td>
+    <td class="key">נפח מנוע</td>
+    <td><div style="direction: rtl;">${test(d[1].nefah_manoa)} סמ"ק</div></td>
    </tr>
    <tr>
-   <td><div style="direction: rtl;">${test(d[1].koah_sus)} <b>כ"ס</b></div></td>
-       <td class="key">כח סוס</td>
+   <td class="key">כח סוס</td>
+   <td><div style="direction: rtl;">${test(d[1].koah_sus)} כ"ס</div></td>
    </tr>
    <tr>
+   <td class="key">הנעה</td>
+   <td>${test(d[1].hanaa_nm)}</td>
+</tr>
+   <tr>
+   <td class="key">רמת גימור</td>
      <td>${test(d[0].ramat_gimur)}</td>
-     <td class="key">רמת גימור</td>
   </tr>
     <tr>
+    <td class="key">משקל כולל</td>
       <td style="direction: rtl;">${test(d[1].mishkal_kolel)} ק"ג</td>
-      <td class="key">משקל כולל</td>
     </tr>
     <tr>
-      <td>${test(d[1].automatic_ind) == 1 ? 'אוטומטי' : 'ידני'}</td>
       <td class="key">תיבת הילוכים</td>
+      <td>${test(d[1].automatic_ind) == 1 ? 'אוטומטי' : 'ידני'}</td>
     </tr> 
-    <tr>
-       <td>${test(d[1].technologiat_hanaa_nm)}</td>
-       <td class="key">הנעה</td>
-    </tr>
-    <tr>
-       <td>${test(d[0].baalut)}</td>
-       <td class="key">בעלות</td>
-    </tr>
+   
+   
 </table>
 
-
-<div style="text-align: right;padding: 5px 30px;font-size: 22px;font-weight: 600;">:אבזור ובטיחות</div>
+<div style="text-align: right;padding: 5px 30px;font-size: 22px;font-weight: 600;">אבזור ובטיחות:</div>
 
 <table>
+<tr>
+<td class="key">רמת איבזור בטיחות</td>
+<td>${test(d[1].ramat_eivzur_betihuty)}</td>
+</tr>
   <tr>
+  <td class="key">מספר כריות אוויר</td>
      <td>${test(d[1].mispar_kariot_avir)}</td>
-     <td class="key">מספר כריות אוויר</td>
   </tr>
-   <tr>
-     <td>${test(d[1].mispar_dlatot)}</td>
-     <td class="key">מספר דלתות</td>
-  </tr>
-  <tr>
-    <td>${test(d[1].mispar_moshavim)}</td>
-    <td class="key">מספר מושבים</td>
-  </tr>
-  <tr>
-     <td><div style="direction: rtl;">${test(d[1].kosher_grira_im_blamim)} ק"ג</div></td>
-     <td class="key">כושר גרירה עם בלמים</td>
-   </tr>
-   <tr>
-     <td><div style="direction: rtl;">${test(d[1].kosher_grira_bli_blamim)} ק"ג</div></td>
-     <td class="key">כושר גרירה בלי בלמים</td>
-  </tr> 
-  <tr>
-      <td>${test(d[1].ramat_eivzur_betihuty)}</td>
-      <td class="key">רמת איבזור בטיחות</td>
-    </tr>
+  
+ 
+
     <tr>
+    <td class="key">ABS</td>
       <td>${test(d[1].abs_ind) == 0 ? 'אין' : 'יש'}</td>
-      <td class="key">ABS</td>
     </tr>
     <tr>
+    <td class="key">חלון בגג</td>
       <td>${test(d[1].halon_bagg_ind) == 0 ? 'אין' : 'יש'}</td>
-      <td class="key">חלון בגג</td>
     </tr>
     <tr>
+    <td class="key">הגה כח</td>
        <td>${test(d[1].hege_koah_ind) == 0 ? 'אין' : 'יש'}</td>
-       <td class="key">הגה כח</td>
     </tr>
 
    <tr>
-     <td>${test(d[1].bakarat_yatzivut_ind) == 0 ? 'אין' : 'יש'}</td>
      <td class="key">בקרת יציבות</td>
+     <td>${test(d[1].bakarat_yatzivut_ind) == 0 ? 'אין' : 'יש'}</td>
    </tr>
     <tr>
+    <td class="key">בקרת סטיה מנתיב</td>
        <td>${test(d[1].bakarat_stiya_menativ_ind) == 0 ? 'אין' : 'יש'}</td>
-       <td class="key">בקרת סטיה מנתיב</td>
     </tr>
     <tr>
+    <td class="key">ניתור מרחק מלפנים</td>
        <td>${test(d[1].nitur_merhak_milfanim_ind) == 0 ? 'אין' : 'יש'}</td>
-       <td class="key">ניתור מרחק מלפנים</td>
     </tr>
     <tr>
+    <td class="key">זיהוי שטח מת</td>
       <td>${test(d[1].zihuy_beshetah_nistar_ind) == 0 ? 'אין' : 'יש'}</td>
-      <td class="key">זיהוי שטח מת</td>
     </tr>
     <tr>
+    <td class="key">בקרת שיוט אדפטיבית</td>
        <td>${test(d[1].bakarat_shyut_adaptivit_ind) == 0 ? 'אין' : 'יש'}</td>
-       <td class="key">בקרת שיוט אדפטיבית</td>
     </tr>
     <tr>
+    <td class="key">זיהוי הולכי רגל</td>
         <td>${test(d[1].zihuy_holchey_regel_ind) == 0 ? 'אין' : 'יש'}</td>
-        <td class="key">זיהוי הולכי רגל</td>
     </tr>
     <tr>
+    <td class="key">מצלמת רוורס מהיצרן</td>
        <td>${test(d[1].matzlemat_reverse_ind) == 0 ? 'אין' : 'יש'}</td>
-       <td class="key">מצלמת רוורס מהיצרן</td>
    </tr>
    <tr>
+   <td class="key">חיישני לחץ אוויר בצמיגים</td>
       <td>${test(d[1].hayshaney_lahatz_avir_batzmigim_ind) == 0 ? 'אין' : 'יש'}</td>
-      <td class="key">חיישני לחץ אוויר בצמיגים</td>
    </tr>
    <tr>
+   <td class="key">חיישני חגורות בטיחות</td>
       <td>${test(d[1].hayshaney_hagorot_ind) == 0 ? 'אין' : 'יש'}</td>
-      <td class="key">חיישני חגורות בטיחות</td>
   </tr>
   <tr>
+  <td class="key">תאורה אוטומטית בנסיעה קדימה</td>
      <td>${test(d[1].teura_automatit_benesiya_kadima_ind) == 0 ? 'אין' : 'יש'}</td>
-     <td class="key">תאורה אוטומטית בנסיעה קדימה</td>
   </tr>
   <tr>
+  <td class="key">שליטה אוטומטית באורות גבוהים</td>
     <td>${test(d[1].shlita_automatit_beorot_gvohim_ind) == 0 ? 'אין' : 'יש'}</td>
-    <td class="key">שליטה אוטומטית באורות גבוהים</td>
   </tr>
   <tr>
+  <td class="key">זיהוי תמרורי תנועה</td>
     <td>${test(d[1].zihuy_tamrurey_tnua_ind) == 0 ? 'אין' : 'יש'}</td>
-    <td class="key">זיהוי תמרורי תנועה</td>
   </tr>
   <tr>
+  <td class="key">זיהוי התקרבות מסוכנת</td>
     <td>${test(d[1].zihuy_matzav_hitkarvut_mesukenet_ind) == 0 ? 'אין' : 'יש'}</td>
-    <td class="key">זיהוי התקרבות מסוכנת</td>
   </tr>
-  ${necha}
+  
 </table>
 
-<div style="text-align: right;padding: 5px 30px;font-size: 22px;font-weight: 600;">:מידע מתקדם</div>
+<div style="text-align: right;padding: 5px 30px;font-size: 22px;font-weight: 600;">מידע נוסף:</div>
 
 
 <table>
 <tr>
+<td class="key">מספר דלתות</td>
+<td>${test(d[1].mispar_dlatot)}</td>
+</tr>
+<tr>
+<td class="key">מספר מושבים</td>
+<td>${test(d[1].mispar_moshavim)}</td>
+</tr>
+<tr>
+<td class="key">קוד תוצר</td>
   <td>${test(d[0].tozeret_cd)}</td>
-  <td class="key">קוד תוצר</td>
 </tr>
 <tr>
+<td class="key">קוד דגם</td>
   <td>${test(d[0].degem_manoa)}</td>
-  <td class="key">דגם מנוע</td>
 </tr>
 <tr>
+<td class="key">קוד דגם</td>
   <td>${test(d[0].degem_cd)}</td>
-  <td class="key">קוד דגם</td>
 </tr>
 <tr>
+<td class="key">שם דגם</td>
   <td>${test(d[0].degem_nm)}</td>
-  <td class="key">שם דגם</td>
 </tr>
 <tr>
+<td class="key">קבוצת זיהום</td>
   <td>${test(d[0].kvutzat_zihum)}</td>
-  <td class="key">קבוצת זיהום</td>
 </tr>
 <tr>
-<td><div style="direction: rtl;">${test(d[0].mivchan_acharon_dt.split('T')[0]).replace(/-/g, '/')}</div></td>
-  <td class="key">מבחן טסט אחרון</td>
+<td class="key">מבחן טסט אחרון</td>
+<td><div style="direction: ltr;">${test(d[0].mivchan_acharon_dt.split('T')[0]).replace(/-/g, '/')}</div></td>
 </tr>
 <tr>
-<td><div style="direction: rtl;">${test(d[0].tokef_dt.split('T')[0]).replace(/-/g, '/')}</div></td>
   <td class="key">תוקף טסט</td>
+  <td><div style="direction: ltr;">${test(d[0].tokef_dt.split('T')[0]).replace(/-/g, '/')}</div></td>
 </tr>
 <tr>
+<td class="key">מספר שילדה</td>
   <td>${test(d[0].misgeret)}</td>
-  <td class="key">מספר שילדה</td>
 </tr>
 <tr>
+<td class="key">צבע רכב</td>
   <td>${test(d[0].tzeva_rechev)}</td>
-  <td class="key">צבע רכב</td>
 </tr>
 <tr>
+<td class="key">מידות צמיג קידמי</td>
   <td>${test(d[0].zmig_kidmi)}</td>
-  <td class="key">מידות צמיג קידמי</td>
 </tr>
 <tr>
+<td class="key">מידות צמיג אחורי</td>
   <td>${test(d[0].zmig_ahori)}</td>
-  <td class="key">מידות צמיג אחורי</td>
 </tr>
 <tr>
+<td class="key">סוג דלק</td>
   <td>${test(d[0].sug_delek_nm)}</td>
-  <td class="key">סוג דלק</td>
 </tr>
 <tr>
+<td class="key">הוראת רשום</td>
   <td>${test(d[0].horaat_rishum)}</td>
-  <td class="key">הוראת רשום</td>
 </tr>
 <tr>
+<td class="key">קוד צבע</td>
   <td>${test(d[0].tzeva_cd)}</td>
-  <td class="key">קוד צבע</td>
 </tr>
+<tr>
+<td class="key">בעלות</td>
+<td>${test(d[0].baalut)}</td>
+</tr>
+${necha}
 </table>
 `
     )
@@ -356,6 +353,14 @@ function test(text) {
 
 
 {/*
+     <tr>
+     <td><div style="direction: rtl;">${test(d[1].kosher_grira_im_blamim)} ק"ג</div></td>
+     <td class="key">כושר גרירה עם בלמים</td>
+   </tr>
+   <tr>
+     <td><div style="direction: rtl;">${test(d[1].kosher_grira_bli_blamim)} ק"ג</div></td>
+     <td class="key">כושר גרירה בלי בלמים</td>
+  </tr> 
         <tr>
         <td>${test(d[0].shnat_yitzur)}</td>
         <td class="key">שנת יצור</td>
