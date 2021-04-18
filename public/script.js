@@ -83,7 +83,7 @@ function CheckCar() {
 
 $("#WelcomCarNumber").focus(function () {
     if ($("#WelcomCarNumber").val().length > 0) {
-        $("#resetInputNumber").css('right', '30px');
+        $("#resetInputNumber").show()
     }
     $(".Welcom .logo img").css({ 'height': '80px', 'transition': 'all 0.3s' })
     setTimeout(function () { $('html,body').scrollTop(0); }, 1);
