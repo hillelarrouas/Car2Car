@@ -137,7 +137,7 @@ tr:nth-child(even) {
 #resetInputNumber {
     position: absolute;
     width: 30px;
-    right: 30px;
+    right: -100vw;
     cursor: pointer;
     opacity: 0.6;
 }
