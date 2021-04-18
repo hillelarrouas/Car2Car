@@ -138,8 +138,7 @@ tr:nth-child(even) {
     top: 29px;
     right: 30px;
     cursor: pointer;
-    opacity: 0.5;
-    display: none;
+    opacity: 0;
 }
 
 

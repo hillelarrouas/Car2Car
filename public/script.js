@@ -6,9 +6,9 @@ function ArrangeCarNumber() {
     let CarNumber = $("#WelcomCarNumber").val().replace(/-/g, '')
     valueCarNumber = CarNumber
     if (CarNumber.length > 0) {
-        $("#resetInputNumber").show();
+        $("#resetInputNumber").css('opacity','0.5');
     } else {
-        $("#resetInputNumber").hide();
+        $("#resetInputNumber").css('opacity','0');
     }
     if (isNaN(Number(CarNumber))) {
         $("#WelcomCarNumber").css({ 'color': 'red', 'border-color': 'red' })
@@ -42,6 +42,7 @@ function CheckCar() {
             if (valueCarNumber.length < 7) {
                 $("#mes").html('נא להזין מספר רכב בין 7/8 ספרות')
             } else {
+                $("#mes").html('<img style="width: 45px;" src="img/gifSearch.gif" alt="Search">')
                 fetch('/getData', {
                     method: 'POST',
                     headers: {
@@ -66,6 +67,31 @@ function CheckCar() {
         console.log(err)
     }
 }
+
+
+$("#WelcomCarNumber").focus(function () {
+    if ($("#WelcomCarNumber").val().length > 0) {
+        $("#resetInputNumber").css('opacity','0.5');
+    }
+    $(".logo img").css({ 'height': '130px' })
+});
+
+
+
+$("#resetInputNumber").click(function () {
+    $("#mes").html('')
+    $("#WelcomCarNumber").focus()
+    $("#WelcomCarNumber").val('')
+    $(this).css('opacity','0');
+    $("#WelcomCarNumber").css({'color':'black','border-color':'black'})
+});
+
+
+$("#WelcomCarNumber").focusout(function () {
+    $("#resetInputNumber").css('opacity','0');
+});
+
+
 
 
 
@@ -306,27 +332,7 @@ function printingData(d) {
 
 
 
-
 function test(text) {
     return text == null ? '' : text
 }
 
-$("#WelcomCarNumber").focus(function () {
-    if ($("#WelcomCarNumber").val().length > 0) {
-        $("#resetInputNumber").show();
-    }
-    $(".logo img").css({ 'height': '130px' })
-});
-
-
-
-$("#resetInputNumber").click(function () {
-    $("#WelcomCarNumber").focus()
-    $("#WelcomCarNumber").val('')
-
-});
-
-
-$("#WelcomCarNumber").focusout(function () {
-    $("#resetInputNumber").hide();
-});
