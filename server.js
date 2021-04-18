@@ -8,31 +8,53 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'))
 
 
+
 app.post('/getData', (req, res) => {
-    const { valueCarNumber } = req.body
-    let alldata = []
-
-    fetch(
-        `https://data.gov.il/api/3/action/datastore_search?q=${valueCarNumber}&resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3`
-    ).then(j => j.json())
-        .then(data => {
-            alldata.push(data.result.records[0])
-            if (data.result.records[0] == undefined) {
-                res.send(false)
-            } else {
-                Promise.all(
-                    [
-                        gatalldata(data.result.records[0]),
-                        getnecha(valueCarNumber)
-                    ]
-                ).then(data => {
-                    alldata.push(data[0],data[1])
-                    res.send(alldata)
-                })
-            }
-        })
+    try {
+        const { valueCarNumber } = req.body
+        let alldata = []
+        fetch(
+            `https://data.gov.il/api/3/action/datastore_search?q=${valueCarNumber}&resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3`
+        ).then(j => j.json())
+            .then(data => {
+                if (data.result.records[0] == undefined) {
+                    fetch(
+                        `https://data.gov.il/api/3/action/datastore_search?q=0${valueCarNumber}&resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3`
+                    ).then(j => j.json())
+                        .then(data => {
+                            if (data.result.records[0] == undefined) {
+                                res.send(false)
+                            }
+                            else {
+                                alldata.push(data.result.records[0])
+                                Promise.all(
+                                    [
+                                        gatalldata(data.result.records[0]),
+                                        getnecha(valueCarNumber)
+                                    ]
+                                ).then(data => {
+                                    alldata.push(data[0], data[1])
+                                    res.send(alldata)
+                                })
+                            }
+                        })
+                } else {
+                    alldata.push(data.result.records[0])
+                    Promise.all(
+                        [
+                            gatalldata(data.result.records[0]),
+                            getnecha(valueCarNumber)
+                        ]
+                    ).then(data => {
+                        alldata.push(data[0], data[1])
+                        res.send(alldata)
+                    })
+                }
+            })
+    } catch (err) {
+        console.log(err)
+    }
 })
-
 
 
 // מידע מפורט על הרכב
@@ -55,7 +77,6 @@ function getnecha(i) {
             .catch(e => reject(e))
     })
 }
-
 
 
 
