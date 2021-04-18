@@ -1,7 +1,7 @@
 let valueCarNumber = 1
 
 function init(){
-    const height = `${Number($("#WelcomCarNumber").css('height').split('p')[0])/2 - Number($("#WelcomCarNumber").css('border').split('p')[0])}px`
+    const height = `${Number($("#WelcomCarNumber").css('height').split('p')[0])/2 - Number($("#WelcomCarNumber").css('border').split('p')[0])*2}px`
     $("#resetInputNumber").css({'top': height})
 }
 
