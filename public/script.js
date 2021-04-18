@@ -1,4 +1,3 @@
-$("#WelcomCarNumber").focus()
 let valueCarNumber = 1
 
 
@@ -6,7 +5,11 @@ function ArrangeCarNumber() {
     $("#mes").html("")
     let CarNumber = $("#WelcomCarNumber").val().replace(/-/g, '')
     valueCarNumber = CarNumber
-
+    if (CarNumber.length > 0){
+        $("#resetInputNumber").show("slow");
+    }else{
+        $("#resetInputNumber").hide("slow");
+    }
     if (isNaN(Number(CarNumber))) {
         $("#WelcomCarNumber").css({ 'color': 'red', 'border-color': 'red' })
     } else {
@@ -59,7 +62,6 @@ function CheckCar() {
         }
     }
 }
-
 
 
 
@@ -215,7 +217,21 @@ function printingData(d) {
 
 
 
-
 function test(text) {
     return text == null ? '' : text
 }
+
+
+$(document).ready(function () {
+    $("#WelcomCarNumber").focus(function () {
+        if ($("#WelcomCarNumber").val().length > 0){
+            $("#resetInputNumber").show("slow");
+        }
+        $(".logo img").css({ 'height': '130px' })
+    });
+});
+
+
+$("#WelcomCarNumber").focusout(function () {
+    $("#resetInputNumber").hide(100);
+});

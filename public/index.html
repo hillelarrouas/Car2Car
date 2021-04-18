@@ -18,7 +18,8 @@
     <div class="Welcom">
         <div class="logo"><img src="img/logo.PNG" alt="logo"></div>
         <div class='text'>גע בלוחית והכנס מספר רכב</div>
-        <div dir="ltr" style="text-align: center;">
+        <div dir="ltr" style="text-align: center;position: relative; margin: auto; width: 90%; max-width: 350px;">
+            <img id='resetInputNumber' src="img/icon x.png" alt="x" onclick="$('#WelcomCarNumber').val('')">
             <input id="WelcomCarNumber" dir="ltr" maxlength="10" type="tel" oninput="ArrangeCarNumber()"
                 onkeyup="if (event.keyCode == 13) { event.preventDefault();CheckCar()}" autocomplete="off" />
             <div id="mes"></div>
@@ -30,7 +31,6 @@
         <div class="logo"><img src="img/logo.PNG" alt="logo"></div>
         <div class="addTable"></div>
     </div>
-
 
     <script src="script.js"></script>
 </body>

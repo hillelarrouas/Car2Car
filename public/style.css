@@ -1,11 +1,14 @@
 body {
     background-color: rgb(238, 238, 238);
     font-family: Assistant;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 15px 10px;
 }
 
 .Welcom {
-    margin: 20px auto;
-    width: 95%;
+    margin: auto;
+    width: 100%;
     max-width: 550px;
     border-radius: 10px;
     background-color: white;
@@ -19,6 +22,7 @@ body {
 
 .logo img {
     height: 300px;
+    transition: all 0.3s;
 }
 
 .text {
@@ -36,7 +40,6 @@ body {
     color: black;
     font-size: xx-large;
     width: 90%;
-    max-width: 350px;
     padding: 8px 20px;
     border-radius: 5px;
     margin: 10px 0 0 0;
@@ -126,4 +129,14 @@ tr:nth-child(even) {
 
 .key {
     font-weight: 600;
+}
+
+#resetInputNumber {
+    position: absolute;
+    width: 30px;
+    top: 29px;
+    right: 30px;
+    display: none;
+    cursor: pointer;
+    opacity: 0.5;
 }
