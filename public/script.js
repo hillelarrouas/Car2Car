@@ -217,11 +217,11 @@ function printingData(d) {
     <td class="key">מספר מושבים</td>
   </tr>
   <tr>
-     <td style="direction: rtl;">${test(d[1].kosher_grira_im_blamim)} ק"ג</td>
+     <td><div style="direction: rtl;">${test(d[1].kosher_grira_im_blamim)} ק"ג</div></td>
      <td class="key">כושר גרירה עם בלמים</td>
    </tr>
    <tr>
-     <td style="direction: rtl;">${test(d[1].kosher_grira_bli_blamim)} ק"ג</td>
+     <td><div style="direction: rtl;">${test(d[1].kosher_grira_bli_blamim)} ק"ג</div></td>
      <td class="key">כושר גרירה בלי בלמים</td>
   </tr> 
   <tr>
@@ -321,11 +321,11 @@ function printingData(d) {
   <td class="key">קבוצת זיהום</td>
 </tr>
 <tr>
-<td style="direction: rtl;">${test(d[0].mivchan_acharon_dt.split('T')[0]).replace(/-/g, '/ ')}</td>
+<td><div style="direction: rtl;">${test(d[0].mivchan_acharon_dt.split('T')[0]).replace(/-/g, '/ ')}</div></td>
   <td class="key">מבחן טסט אחרון</td>
 </tr>
 <tr>
-<td style="direction: rtl;">${test(d[0].tokef_dt.split('T')[0]).replace(/-/g, '/ ')}</td>
+<td><div style="direction: rtl;">${test(d[0].tokef_dt.split('T')[0]).replace(/-/g, '/ ')}</div></td>
   <td class="key">תוקף טסט</td>
 </tr>
 <tr>
