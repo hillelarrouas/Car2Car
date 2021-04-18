@@ -131,6 +131,7 @@ $(window, 'body').on('scroll', function () {
 
 
 function printingData(d) {
+    console.log(d)
     let necha;
     if (d[2] == undefined) {
         necha = `<tr>
@@ -152,18 +153,14 @@ function printingData(d) {
 
 
     $(".addTable").html(
-        `<div style="text-align: center;font-size: x-large;padding: 10px 0;font-weight: 600;text-shadow: 2px 2px 9px rgb(254 250 220);">${test(d[0].kinuy_mishari)} ${test(d[0].tozeret_nm)}</div>
+        `<div dir="rtl" style="text-align: center;font-size: x-large;padding: 10px 0;font-weight: 600;text-shadow: 2px 2px 9px rgb(254 250 220);"><div style='display:inline-block'>${test(d[0].tozeret_nm)}</div> <div  style='display:inline-block'>${test(d[0].kinuy_mishari)}</div> | <div  style='display:inline-block'>${test(d[0].shnat_yitzur)}</div></div>
         <table>
     <tr>
-        <td>${test(d[0].shnat_yitzur)}</td>
-        <td class="key">שנת יצור</td>
-    </tr>
-    <tr>
-      <td>${test(d[1].nefah_manoa)}</td>
+    <td><div style="direction: rtl;">${test(d[1].nefah_manoa)} <b>סמ"ק</b></div></td>
       <td class="key">נפח מנוע</td>
    </tr>
    <tr>
-       <td>${test(d[1].koah_sus)}</td>
+   <td><div style="direction: rtl;">${test(d[1].koah_sus)} <b>כ"ס</b></div></td>
        <td class="key">כח סוס</td>
    </tr>
    <tr>
@@ -358,7 +355,12 @@ function test(text) {
 
 
 
-{/* <tr>
+{/*
+        <tr>
+        <td>${test(d[0].shnat_yitzur)}</td>
+        <td class="key">שנת יצור</td>
+    </tr>
+     <tr>
 <td>${test(d[0].mispar_rechev)}</td>
 <td class="key">מספר רכב</td>
 </tr>
