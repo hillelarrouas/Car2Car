@@ -8,7 +8,7 @@ function init() {
 // מספר רכב אליהו 36-005-54
 
 function ArrangeCarNumber() {
-    $("#mes").html("")
+    $("#ErrorMsg").html("")
     let CarNumber = $("#WelcomCarNumber").val().replace(/-/g, '')
     valueCarNumber = CarNumber
     if (CarNumber.length > 0) {
@@ -40,17 +40,19 @@ function ArrangeCarNumber() {
 
 
 function CheckCar() {
+    ArrangeCarNumber()
     console.log(valueCarNumber.length)
     try {
         if (!Number(valueCarNumber)) {
-            $("#mes").html('נא להזין ספרות בלבד')
+            $("#ErrorMsg").html('נא להזין ספרות בלבד')
         }
         else {
             if (valueCarNumber.length < 7 || valueCarNumber.length == undefined) {
-                $("#mes").html('נא להזין מספר רכב בין 7/8 ספרות')
+                $("#ErrorMsg").html('נא להזין מספר רכב בין 7/8 ספרות')
             } else {
-                $("#mes").html('<img style="width: 45px;" src="img/gifSearch.gif" alt="Search">')
+                $("#ErrorMsg").html('')
                 $("#WelcomBt").hide()
+                $("#WelcomWait").show()
                 fetch('/getData', {
                     method: 'POST',
                     headers: {
@@ -60,6 +62,7 @@ function CheckCar() {
                 })
                     .then(res => res.json())
                     .then(data => {
+                        $("#WelcomWait").hide()
                         if (data) {
                             printingData(data)
                             $(".Welcom .logo img").css({ 'height': '200px', 'transition': 'all 0.3s' })
@@ -68,7 +71,7 @@ function CheckCar() {
                         }
                         else {
                             $("#WelcomBt").show()
-                            $("#mes").html('מספר רכב לא קיים במאגר')
+                            $("#ErrorMsg").html('מספר רכב לא קיים במאגר')
                         }
                     })
             }
@@ -90,7 +93,7 @@ $("#WelcomCarNumber").focus(function () {
 
 
 $("#resetInputNumber").click(function () {
-    $("#mes").html('')
+    $("#ErrorMsg").html('')
     $("#WelcomCarNumber").val('')
     $("#WelcomCarNumber").focus()
     $("#WelcomCarNumber").css({ 'color': 'black', 'border-color': 'black' })
@@ -104,7 +107,7 @@ $("#WelcomCarNumber").focusout(function () {
 
 
 $("#reternWelcom").click(function () {
-    $("#mes").html('')
+    $("#ErrorMsg").html('')
     $("#WelcomCarNumber").val('')
     $("#WelcomCarNumber").focus()
     $("#WelcomCarNumber").css({ 'color': 'black', 'border-color': 'black' })
@@ -112,6 +115,8 @@ $("#reternWelcom").click(function () {
     $(".Welcom").show();
     $("#WelcomCarNumber").focus()
     $("#WelcomBt").show();
+    $("#WelcomWait").hide();
+
 });
 
 

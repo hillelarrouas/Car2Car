@@ -20,7 +20,7 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="/img/logo1.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Assistant:400,600,700&display=swap&subset=hebrew" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
@@ -34,8 +34,10 @@
             <img id='resetInputNumber' src="img/icon x.png" alt="x">
             <input id="WelcomCarNumber" dir="ltr" maxlength="10" type="tel" oninput="ArrangeCarNumber()"
                 onkeyup="if (event.keyCode == 13) { event.preventDefault();CheckCar()}" autocomplete="off" />
-            <div id="mes"></div>
-            <input value="אישור" id="WelcomBt" type="button" class="Bt" onclick="CheckCar()">
+            <input value="המשך" id="WelcomBt" type="button" class="Bt" onclick="CheckCar()">
+            <div id="WelcomWait" style="display: none;text-align: center;margin-top: 10px;"><img style="width: 45px;" src="img/gifSearch.gif" alt="Search"></div>
+            <div id="ErrorMsg" style="color: indianred;padding: 10px;font-weight: 600;font-size: larger;"></div>
+
         </div>
     </div>
     <div class="cardTable">
@@ -44,6 +46,6 @@
         <div class="addTable"></div>
     </div>
 
-    <script src="script.js?0"></script>
+    <script src="script.js?1"></script>
 </body>
 </html>
