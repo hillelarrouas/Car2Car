@@ -1,14 +1,21 @@
 let valueCarNumber = 1
+
+function init(){
+    const height = `${Number($("#WelcomCarNumber").css('height').split('p')[0])/2 - Number($("#WelcomCarNumber").css('border').split('p')[0])}px`
+    $("#resetInputNumber").css({'top': height})
+}
+
 // מספר רכב אליהו 36-005-54
 
 function ArrangeCarNumber() {
+    // $(".Welcom .logo img").css({ 'top': `${Number($("#WelcomCarNumber").css('height').split('p')[0])-30}px`})
     $("#mes").html("")
     let CarNumber = $("#WelcomCarNumber").val().replace(/-/g, '')
     valueCarNumber = CarNumber
     if (CarNumber.length > 0) {
-        $("#resetInputNumber").css('opacity','0.5');
+        $("#resetInputNumber").css('right', '30px');
     } else {
-        $("#resetInputNumber").css('opacity','0');
+        $("#resetInputNumber").css('right', '-100vw');
     }
     if (isNaN(Number(CarNumber))) {
         $("#WelcomCarNumber").css({ 'color': 'red', 'border-color': 'red' })
@@ -34,6 +41,7 @@ function ArrangeCarNumber() {
 
 
 function CheckCar() {
+
     try {
         if (!Number(valueCarNumber)) {
             $("#mes").html('נא להזין ספרות בלבד')
@@ -54,6 +62,7 @@ function CheckCar() {
                     .then(data => {
                         if (data) {
                             printingData(data)
+                            $(".Welcom .logo img").css({ 'height': '300px', 'transition': 'all 0.3s' })
                             $(".Welcom").hide();
                             $(".cardTable").show();
                         }
@@ -71,26 +80,36 @@ function CheckCar() {
 
 $("#WelcomCarNumber").focus(function () {
     if ($("#WelcomCarNumber").val().length > 0) {
-        $("#resetInputNumber").css('opacity','0.5');
+        $("#resetInputNumber").css('right', '30px');
     }
-    $(".logo img").css({ 'height': '130px' })
+    $(".Welcom .logo img").css({ 'height': '130px', 'transition': 'all 0.3s' })
 });
 
 
 
 $("#resetInputNumber").click(function () {
     $("#mes").html('')
-    $("#WelcomCarNumber").focus()
     $("#WelcomCarNumber").val('')
-    $(this).css('opacity','0');
-    $("#WelcomCarNumber").css({'color':'black','border-color':'black'})
+    $("#WelcomCarNumber").focus()
+    $("#WelcomCarNumber").css({ 'color': 'black', 'border-color': 'black' })
+    $("#resetInputNumber").css('right', '-100vw')
 });
 
 
 $("#WelcomCarNumber").focusout(function () {
-    $("#resetInputNumber").css('opacity','0');
+    setTimeout(function () { $("#resetInputNumber").css('right', '-100vw'); }, 100);
 });
 
+
+$("#reternWelcom").click(function () {
+    $("#mes").html('')
+    $("#WelcomCarNumber").val('')
+    $("#WelcomCarNumber").focus()
+    $("#WelcomCarNumber").css({ 'color': 'black', 'border-color': 'black' })
+    $(".cardTable").hide();
+    $(".Welcom").show();
+    $("#WelcomCarNumber").focus()
+});
 
 
 

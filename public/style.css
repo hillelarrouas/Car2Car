@@ -14,13 +14,14 @@ body {
     background-color: white;
     padding:20px 0;
     padding-top: 0;
+    /* display: none; */
 }
 
 .logo {
     text-align: center;
 }
 
-.logo img {
+.Welcom .logo img {
     height: 300px;
     transition: all 0.3s;
 }
@@ -75,13 +76,14 @@ body {
 
 
 .cardTable {
-    margin: 20px auto;
+    margin: auto;
     width: 95%;
     max-width: 550px;
     border-radius: 10px;
     background-color: white;
     padding: 20px 0 5px;
     min-height: 500px;
+    position: relative;
     display: none;
 }
 
@@ -135,11 +137,20 @@ tr:nth-child(even) {
 #resetInputNumber {
     position: absolute;
     width: 30px;
-    top: 29px;
     right: 30px;
     cursor: pointer;
-    opacity: 0;
+    opacity: 0.6;
 }
+
+#reternWelcom{
+    width: 40px;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
 
 
 @media only screen and (max-width:900px) {

@@ -13,9 +13,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body>
+<body onload="init()">
 
-<div style="position: fixed;width: 100%; left: 0; padding: 15px 10px;box-sizing: border-box;" >
+<div style="position: fixed;width: 100%;top: 0; left: 0; padding: 15px 10px;box-sizing: border-box;" >
     <div class="Welcom">
         <div class="logo"><img src="img/logo.PNG" alt="logo"></div>
         <div class='text'>הקלד מספר רכב</div>
@@ -29,7 +29,8 @@
     </div>
 </div>
     <div class="cardTable">
-        <div class="logo"><img src="img/logo.PNG" alt="logo"></div>
+        <div class="logo"><img style="height: 130px;" src="img/logo.PNG" alt="logo"></div>
+        <img id="reternWelcom" src="img/return.png" alt="חזרה">
         <div class="addTable"></div>
     </div>
 
