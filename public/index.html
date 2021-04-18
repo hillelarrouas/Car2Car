@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car2Car</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/img/logo.PNG" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Assistant" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+
+    <div class="Welcom">
+        <div class="logo"><img src="img/logo.PNG" alt="logo"></div>
+        <div class='text'>גע בלוחית והכנס מספר רכב</div>
+        <div dir="ltr" style="text-align: center;">
+            <input id="WelcomCarNumber" dir="ltr" maxlength="10" type="tel" oninput="ArrangeCarNumber()"
+                onkeyup="if (event.keyCode == 13) { event.preventDefault();CheckCar()}" autocomplete="off" />
+            <div id="mes"></div>
+            <input value="אישור" id="WelcomBt" type="button" class="Bt" onclick="CheckCar()">
+        </div>
+    </div>
+
+    <div class="cardTable">
+        <div class="logo"><img src="img/logo.PNG" alt="logo"></div>
+        <div class="addTable"></div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
