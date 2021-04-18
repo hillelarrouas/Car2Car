@@ -6,6 +6,7 @@ function init() {
 
 // מספר רכב אליהו 36-005-54
 
+
 function ArrangeCarNumber() {
     $("#ErrorMsg").html("")
     let FixedCarNumber = $("#WelcomCarNumber").val().replace(/-/g, '')
@@ -116,7 +117,13 @@ $("#reternWelcom").click(function () {
 
 });
 
-
+$(window , 'body').on('scroll', function() {
+    if ($('html,body').scrollTop() >=300){
+        $(".scooll").show(150)
+    }else{
+        $(".scooll").hide(150)
+    }
+});
 
 
 function printingData(d) {
