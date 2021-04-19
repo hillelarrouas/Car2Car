@@ -54,6 +54,8 @@ function CheckCar() {
                     $("#ErrorMsg").html('')
                     $("#WelcomBt").hide()
                     $("#WelcomWait").show()
+
+
                     fetch('/getData', {
                         method: 'POST',
                         headers: {
@@ -74,6 +76,11 @@ function CheckCar() {
                                 $("#WelcomBt").show()
                                 $("#ErrorMsg").html('מספר רכב לא קיים במאגר')
                             }
+                        }).catch(err => {
+                            console.log(err)
+                            $("#ErrorMsg").html('תקלה')
+                            $("#WelcomBt").show()
+                            $("#WelcomWait").hide()
                         })
                 }
             }
@@ -344,12 +351,9 @@ ${necha}
 }
 
 
-
 function test(text) {
     return text == null ? '' : text
 }
-
-
 
 
 {/*
