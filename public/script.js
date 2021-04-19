@@ -1,10 +1,28 @@
-
 function init() {
     const height = `${Number($("#WelcomCarNumber").css('height').split('p')[0]) / 2 - Number($("#WelcomCarNumber").css('border').split('p')[0]) * 2}px`
     $("#resetInputNumber").css({ 'top': height })
 }
 
-// מספר רכב אליהו 36-005-54
+
+
+function addUser(){
+    if ($("#cardmesadduser").css('height') == '0px'){
+        $("#cardmesadduser").css('height','450px')
+    }
+    else{
+        $("#cardmesadduser").css('height','0px')
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
 
 function ArrangeCarNumber() {
