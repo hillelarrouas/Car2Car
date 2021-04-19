@@ -7,10 +7,12 @@ function init() {
 
 function addUser(){
     if ($("#cardmesadduser").css('height') == '0px'){
-        $("#cardmesadduser").css('height','450px')
+        $("#cardmesadduser").css('height','auto')
+        setTimeout(function () { $('html, body').animate({ scrollTop: 800 }, 300); }, 1);
     }
     else{
-        $("#cardmesadduser").css('height','0px')
+        $("#cardmesadduser").animate({'height':'0px'},150)
+        // setTimeout(function () { $('html, body').animate({ scrollTop: 0 }, 300); }, 1);
     }
 }
 
