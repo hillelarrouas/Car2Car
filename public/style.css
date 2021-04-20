@@ -273,13 +273,13 @@ background-color: whitesmoke;
     right: 5px;
 }
 
-#resetInputtellogin{
+#resetInputtellogin,#resetInputpasslogin{
     position: absolute;
     width: 30px;
     right: 10px;
     cursor: pointer;
     opacity: 0.6;
-    /* display: none; */
+    display: none;
 }
 
 

@@ -3,7 +3,8 @@ function init() {
     $("#resetInputNumber").css({ 'top': heightinputnumbercar })
     const heightinputtellogin = `${Number($("#inputTelLogin").css('height').split('p')[0]) / 2 + Number($("#inputTelLogin").css('border').split('p')[0]) * 5}px`
     $("#resetInputtellogin").css({ 'top': heightinputtellogin })
-    console.log($("#inputTelLogin").css('height'))
+    const heightinputPassLogin = `${Number($("#inputPassLogin").css('height').split('p')[0]) / 2 + Number($("#inputPassLogin").css('border').split('p')[0]) * 5}px`
+    $("#resetInputpasslogin").css({ 'top': heightinputPassLogin })
 }
 
 
@@ -15,17 +16,8 @@ function addUser() {
     }
     else {
         $("#cardmesadduser").animate({ 'height': '0px' }, 150)
-        // setTimeout(function () { $('html, body').animate({ scrollTop: 0 }, 300); }, 1);
     }
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -115,16 +107,6 @@ function CheckCar() {
 }
 
 
-$("#WelcomCarNumber").focus(function () {
-    if ($("#WelcomCarNumber").val().length > 0) {
-        $("#resetInputNumber").show()
-    }
-    $(".Welcom .logo img").css({ 'height': '80px', 'transition': 'all 0.3s' })
-    setTimeout(function () { $('html,body').scrollTop(0); }, 1);
-});
-
-
-
 $("#resetInputNumber").click(function () {
     $("#ErrorMsg").html('')
     $("#WelcomCarNumber").val('')
@@ -137,6 +119,56 @@ $("#resetInputNumber").click(function () {
 $("#WelcomCarNumber").focusout(function () {
     setTimeout(function () { $("#resetInputNumber").hide() }, 100);
 });
+
+$("#WelcomCarNumber").focus(function () {
+    if ($("#WelcomCarNumber").val().length > 0) {
+        $("#resetInputNumber").show()
+    }
+    $(".Welcom .logo img").css({ 'height': '80px', 'transition': 'all 0.3s' })
+    setTimeout(function () { $('html,body').scrollTop(0); }, 1);
+});
+
+
+$("#inputTelLogin").focusout(function () {
+    setTimeout(function () { $("#resetInputtellogin").hide() }, 100);
+});
+
+$("#inputTelLogin").focus(function () {
+    if ($("#inputTelLogin").val().length > 0) {
+        $("#resetInputtellogin").show()
+    }
+});
+
+$("#inputTelLogin").on('input', function () {
+    if ($("#inputTelLogin").val().length > 0) {
+        $("#resetInputtellogin").show()
+    } else {
+        $("#resetInputtellogin").hide()
+    }
+})
+
+
+
+$("#inputPassLogin").focusout(function () {
+    setTimeout(function () { $("#resetInputpasslogin").hide() }, 100);
+});
+
+$("#inputPassLogin").focus(function () {
+    if ($("#inputPassLogin").val().length > 0) {
+        $("#resetInputpasslogin").show()
+    }
+});
+
+$("#inputPassLogin").on('input', function () {
+    if ($("#inputPassLogin").val().length > 0) {
+        $("#resetInputpasslogin").show()
+    } else {
+        $("#resetInputpasslogin").hide()
+    }
+})
+
+
+
 
 
 $("#reternWelcom").click(function () {
@@ -199,6 +231,7 @@ $("#inputTelLogin").keyup(function () {
 
 
 $("#submitLogin").click(function () {
+    $("#inputTelLogin").focus()
     const valueTel = $("#inputTelLogin").val().replace(/-/g, '')
     console.log(valueTel.length)
     if (valueTel == '') {
@@ -208,6 +241,7 @@ $("#submitLogin").click(function () {
             $("#ErrorMsgLogin").html('מספר טלפון לא תקין, הזן מספר בין 9 / 10 ספרות בלבד')
         } else {
             if (valueTel == '0534633147') {
+                init()
                 $("#ErrorMsgLogin").html()
                 $('#inputTelLogin').attr('readonly', true);
                 setTimeout(function () { $(".cardPass").show() }, 500);
