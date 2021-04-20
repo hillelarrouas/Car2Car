@@ -5,13 +5,13 @@ function init() {
 
 
 
-function addUser(){
-    if ($("#cardmesadduser").css('height') == '0px'){
-        $("#cardmesadduser").css('height','auto')
+function addUser() {
+    if ($("#cardmesadduser").css('height') == '0px') {
+        $("#cardmesadduser").css('height', 'auto')
         setTimeout(function () { $('html, body').animate({ scrollTop: 800 }, 300); }, 1);
     }
-    else{
-        $("#cardmesadduser").animate({'height':'0px'},150)
+    else {
+        $("#cardmesadduser").animate({ 'height': '0px' }, 150)
         // setTimeout(function () { $('html, body').animate({ scrollTop: 0 }, 300); }, 1);
     }
 }
@@ -89,6 +89,7 @@ function CheckCar() {
                             if (data) {
                                 printingData(data)
                                 $(".Welcom .logo img").css({ 'height': '200px', 'transition': 'all 0s' })
+                                $("#cardmesadduser").css({ 'height': '0px' })
                                 $(".Welcom").hide();
                                 $(".cardTable").show();
                             }
@@ -155,6 +156,77 @@ $(window, 'body').on('scroll', function () {
         $(".scooll").hide()
     }
 });
+
+
+function showLogin() {
+    $("#ErrorMsg").html('')
+    $(".cardfixed").show()
+    $(".cardlogin").animate({ 'margin': '0px auto' }, 200)
+    $("#inputTelLogin").focus()
+}
+
+
+$("#cardfixedhide").click(function () {
+    $("#inputTelLogin").val('')
+    $("#inputPassLogin").val('')
+    $("#ErrorMsgLogin").html('')
+    $(".cardPass").hide()
+    $('#inputTelLogin').attr('readonly', false);
+    $(".cardlogin").animate({ 'margin': '-500px auto' }, 300)
+    setTimeout(function () { $(".cardfixed").hide() }, 100);
+});
+
+
+
+$("#inputTelLogin").keyup(function () {
+    $("#ErrorMsgLogin").html('')
+    let value = $(this).val().replace(/-/g, '')
+    if (value.length > 2) {
+        if (value[1] !== '5' && value[1] !== '7') {
+            value = value.substring(0, 2) + "-" + value.substr(2)
+        } else if (value.length > 3) {
+            value = value.substring(0, 3) + "-" + value.substr(3)
+        }
+        $(this).val(value)
+    }
+})
+
+
+
+
+$("#submitLogin").click(function () {
+    const valueTel = $("#inputTelLogin").val().replace(/-/g, '')
+    console.log(valueTel.length)
+    if (valueTel == '') {
+        $("#ErrorMsgLogin").html('הזן מספר טלפון בין 9/ 10 ספרות')
+    } else {
+        if (valueTel.length != 9 && valueTel.length != 10) {
+            $("#ErrorMsgLogin").html('מספר טלפון לא תקין, הזן מספר בין 9 / 10 ספרות בלבד')
+        } else {
+            if (valueTel == '0534633147') {
+                $("#ErrorMsgLogin").html()
+                $('#inputTelLogin').attr('readonly', true);
+                setTimeout(function () { $(".cardPass").show() }, 500);
+                setTimeout(function () { $("#inputPassLogin").focus() }, 501);
+
+                if ($("#inputTelLogin").val().replace(/-/g, '') == '0534633147' && $("#inputPassLogin").val() == '12345') {
+                    $("#ErrorMsgLogin").html('הכניסה אושרה')
+                    setTimeout(function () { $("#cardfixedhide").click() }, 800);
+                }
+            }
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+
 
 
 function printingData(d) {
