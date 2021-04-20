@@ -83,12 +83,14 @@
         <div class="cardlogin">
             <img id="cardfixedhide" src="img/icon x.png" alt="X">
             <div style="padding:15px 0 20px;font-size: larger;font-weight: 700;">כניסה לאיזור האישי</div>
-            <div style="width: 90%; max-width: 270px;margin: auto;">
+            <div style="width: 90%; max-width: 270px;margin: auto;position: relative;">
+                <img id='resetInputtellogin' src="img/icon x.png" alt="x">
                 <div style="text-align: right;font-weight: 600;" autocomplete="off">הזן מספר טלפון:</div>
-                <input id='inputTelLogin' type="tel" onkeyup="if (event.keyCode == 13) { $('#submitLogin').click() }">
+                <input id='inputTelLogin' type="tel" onkeyup="if (event.keyCode == 13) { $('#submitLogin').click() }"maxlength="11">
                 <div class="cardPass" style="display: none;">
+                    <img id='resetInputpasslogin' src="img/icon x.png" alt="x">
                     <div style="text-align: right; font-weight: 600;">הזן סיסמה:</div>
-                    <input id="inputPassLogin" type="password" autocomplete="off" onkeyup="if (event.keyCode == 13) { $('#submitLogin').click() }">
+                    <input id="inputPassLogin" type="password" autocomplete="off" onkeyup="if (event.keyCode == 13) { $('#submitLogin').click() }"maxlength='6'/>
                 </div>
                 <button id="submitLogin">אישור</button>
                 <div id="ErrorMsgLogin" style="margin:0 0 5px;"></div>

@@ -1,6 +1,9 @@
 function init() {
-    const height = `${Number($("#WelcomCarNumber").css('height').split('p')[0]) / 2 - Number($("#WelcomCarNumber").css('border').split('p')[0]) * 2}px`
-    $("#resetInputNumber").css({ 'top': height })
+    const heightinputnumbercar = `${Number($("#WelcomCarNumber").css('height').split('p')[0]) / 2 - Number($("#WelcomCarNumber").css('border').split('p')[0]) * 2}px`
+    $("#resetInputNumber").css({ 'top': heightinputnumbercar })
+    const heightinputtellogin = `${Number($("#inputTelLogin").css('height').split('p')[0]) / 2 + Number($("#inputTelLogin").css('border').split('p')[0]) * 5}px`
+    $("#resetInputtellogin").css({ 'top': heightinputtellogin })
+    console.log($("#inputTelLogin").css('height'))
 }
 
 
@@ -163,6 +166,7 @@ function showLogin() {
     $(".cardfixed").show()
     $(".cardlogin").animate({ 'margin': '0px auto' }, 200)
     $("#inputTelLogin").focus()
+    init()
 }
 
 
