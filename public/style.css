@@ -38,9 +38,9 @@ body {
     border: 3px solid black;
     background-color: #ffca11;
     color: black;
-    font-size: xx-large;
-    width: 90%;
-    padding: 8px 20px;
+    font-size: x-large;
+    width: 86%;
+    padding: 7px 20px;
     border-radius: 5px;
     margin: 10px 0 0 0;
     text-align: center;
@@ -55,10 +55,10 @@ body {
 }
 
 .Bt {
-    font-size: x-large;
+    font-size: larger;
     width: 90%;
-    max-width: 350px;
-    padding: 10px;
+    max-width: 300px;
+    padding: 8px;
     border: 0px;
     border-radius: 10px;
     text-align: center;
@@ -180,10 +180,11 @@ tr:nth-child(even) {
 
 
 .btadduser {
-    font-size: x-large;
+    font-size: larger;
+    max-width: 300px;
+    padding: 8px;
     width: 90%;
-    max-width: 350px;
-    height: 50px;
+    height: 40px;
     border: 0px;
     border-radius: 10px;
     text-align: center;
@@ -204,7 +205,7 @@ tr:nth-child(even) {
 
 
 .btadduser img {
-    width: 35px;
+    width: 30px;
     padding-left: 10px;
 }
 
