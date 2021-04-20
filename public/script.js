@@ -5,6 +5,19 @@ function init() {
     $("#resetInputtellogin").css({ 'top': heightinputtellogin })
     const heightinputPassLogin = `${Number($("#inputPassLogin").css('height').split('p')[0]) / 2 + Number($("#inputPassLogin").css('border').split('p')[0]) * 5}px`
     $("#resetInputpasslogin").css({ 'top': heightinputPassLogin })
+
+
+    fetch('https://car2car.herokuapp.com/getData', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ valueCarNumber: 4635868 })
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
 }
 
 
@@ -53,6 +66,10 @@ function ArrangeCarNumber() {
 
 
 
+// $.ajax({url: "https://car2car.herokuapp.com/getData/4635868", success: function(result){
+//     console.log(result)
+//   }});
+
 function CheckCar() {
     let CarNumber = $("#WelcomCarNumber").val().replace(/-/g, '')
     try {
@@ -72,7 +89,7 @@ function CheckCar() {
 
 
                     fetch('/getData', {
-                        method: 'POST',
+                        method: 'get',
                         headers: {
                             'Content-Type': 'application/json'
                         },
@@ -241,11 +258,11 @@ $("#submitLogin").click(function () {
             $("#ErrorMsgLogin").html('מספר טלפון לא תקין, הזן מספר בין 9 / 10 ספרות בלבד')
         } else {
             if (valueTel == '0534633147') {
-                init()
                 $("#ErrorMsgLogin").html()
                 $('#inputTelLogin').attr('readonly', true);
                 setTimeout(function () { $(".cardPass").show() }, 500);
-                setTimeout(function () { $("#inputPassLogin").focus() }, 501);
+                setTimeout(function () { $("#inputPassLogin").focus(), init() }, 501);
+
 
                 if ($("#inputTelLogin").val().replace(/-/g, '') == '0534633147' && $("#inputPassLogin").val() == '12345') {
                     $("#ErrorMsgLogin").html('הכניסה אושרה')

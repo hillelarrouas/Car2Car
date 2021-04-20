@@ -6,12 +6,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('public'))
+const cors = require('cors')
 
+app.use(cors())
 
 
 app.post('/getData', (req, res) => {
     try {
         const { valueCarNumber } = req.body
+        console.log(valueCarNumber)
         let alldata = []
         fetch(
             `https://data.gov.il/api/3/action/datastore_search?q=${valueCarNumber}&resource_id=053cea08-09bc-40ec-8f7a-156f0677aff3`
