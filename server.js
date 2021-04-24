@@ -63,7 +63,7 @@ app.post('/getData', (req, res) => {
 // מידע מפורט על הרכב
 function gatalldata(d) {
     return new Promise((resolve, reject) => {
-        fetch(`https://data.gov.il/api/3/action/datastore_search?q=${encodeURIComponent(`${test(d.tozeret_nm)} ${test(d.kinuy_mishari)} ${test(d.ramat_gimur)} ${test(d.shnat_yitzur)} ${test(d.degem_nm)} ${test(d.degem_cd)}`)}&resource_id=142afde2-6228-49f9-8a29-9b6c3a0cbe40`)
+        fetch(`https://data.gov.il/api/3/action/datastore_search?q=${encodeURIComponent(`${test(d.tozeret_cd)} ${test(d.degem_cd)} ${test(d.shnat_yitzur)}`)}&resource_id=142afde2-6228-49f9-8a29-9b6c3a0cbe40`)
             .then(j => j.json())
             .then(data => resolve(data.result.records[0]))
             .catch(e => reject(e))

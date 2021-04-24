@@ -7,17 +7,6 @@ function init() {
     $("#resetInputpasslogin").css({ 'top': heightinputPassLogin })
 
 
-    fetch('https://car2car.herokuapp.com/getData', {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ valueCarNumber: 4635868 })
-    })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-        })
 }
 
 
@@ -88,8 +77,8 @@ function CheckCar() {
                     $("#WelcomWait").show()
 
 
-                    fetch('/getData', {
-                        method: 'get',
+                    fetch('https://car2car.herokuapp.com/getData', {
+                        method: 'post',
                         headers: {
                             'Content-Type': 'application/json'
                         },
