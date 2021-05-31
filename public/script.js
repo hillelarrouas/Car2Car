@@ -77,7 +77,7 @@ function CheckCar() {
                     $("#WelcomWait").show()
 
 
-                    fetch('https://car2car.herokuapp.com/getData', {
+                    fetch('/getData', {
                         method: 'post',
                         headers: {
                             'Content-Type': 'application/json'
