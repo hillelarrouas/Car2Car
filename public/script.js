@@ -1,12 +1,11 @@
 function init() {
+    window.location.href = "http://car2car.co.il";
     const heightinputnumbercar = `${Number($("#WelcomCarNumber").css('height').split('p')[0]) / 2 - Number($("#WelcomCarNumber").css('border').split('p')[0]) * 2}px`
     $("#resetInputNumber").css({ 'top': heightinputnumbercar })
     const heightinputtellogin = `${Number($("#inputTelLogin").css('height').split('p')[0]) / 2 + Number($("#inputTelLogin").css('border').split('p')[0]) * 5}px`
     $("#resetInputtellogin").css({ 'top': heightinputtellogin })
     const heightinputPassLogin = `${Number($("#inputPassLogin").css('height').split('p')[0]) / 2 + Number($("#inputPassLogin").css('border').split('p')[0]) * 5}px`
     $("#resetInputpasslogin").css({ 'top': heightinputPassLogin })
-
-
 }
 
 
