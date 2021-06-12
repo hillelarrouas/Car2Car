@@ -86,6 +86,7 @@ function CheckCar() {
                     })
                         .then(res => res.json())
                         .then(data => {
+                            console.log(data)
                             $("#WelcomWait").hide()
                             if (data) {
                                 printingData(data)
