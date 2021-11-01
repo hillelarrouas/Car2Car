@@ -1,11 +1,16 @@
 function init() {
-    window.location.href = "http://car2car.co.il";
+    //window.location.href = "http://car2car.co.il";
     const heightinputnumbercar = `${Number($("#WelcomCarNumber").css('height').split('p')[0]) / 2 - Number($("#WelcomCarNumber").css('border').split('p')[0]) * 2}px`
     $("#resetInputNumber").css({ 'top': heightinputnumbercar })
     const heightinputtellogin = `${Number($("#inputTelLogin").css('height').split('p')[0]) / 2 + Number($("#inputTelLogin").css('border').split('p')[0]) * 5}px`
     $("#resetInputtellogin").css({ 'top': heightinputtellogin })
     const heightinputPassLogin = `${Number($("#inputPassLogin").css('height').split('p')[0]) / 2 + Number($("#inputPassLogin").css('border').split('p')[0]) * 5}px`
     $("#resetInputpasslogin").css({ 'top': heightinputPassLogin })
+
+
+    if (localStorage.getItem('SearchHistory') == null){
+        localStorage.setItem('SearchHistory', '[]');
+    }
 }
 
 
@@ -88,11 +93,13 @@ function CheckCar() {
                             console.log(data)
                             $("#WelcomWait").hide()
                             if (data) {
+                                console.log(data)
                                 printingData(data)
                                 $(".Welcom .logo img").css({ 'height': '200px', 'transition': 'all 0s' })
                                 $("#cardmesadduser").css({ 'height': '0px' })
                                 $(".Welcom").hide();
                                 $(".cardTable").show();
+                                GetSearchHistory('AddHistory', { tozeret_nm: test(data[0].tozeret_nm), kinuy_mishari: test(data[0].kinuy_mishari), mispar_rechev: test(data[0].mispar_rechev), shnat_yitzur: test(data[0].shnat_yitzur), Date: new Date().toLocaleString().replace(', ', ' | ').replaceAll('.', '/').substring(0, 18) })
                             }
                             else {
                                 $("#WelcomBt").show()
