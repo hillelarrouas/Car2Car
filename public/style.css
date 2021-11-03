@@ -1,10 +1,16 @@
+* {
+    font-family: Assistant;
+}
+
+
+
 body {
     background-color: rgb(238, 238, 238);
-    font-family: Assistant;
     box-sizing: border-box;
     margin: 0;
     padding: 15px 10px;
-    height: 100vw;
+    /*overscroll-behavior: contain;*/
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 
 .Welcom {
@@ -41,7 +47,7 @@ body {
     color: black;
     font-size: x-large;
     width: 86%;
-    padding: 7px 20px;
+    padding: 7px 40px;
     border-radius: 5px;
     margin: 10px 0 0 0;
     text-align: center;
@@ -52,7 +58,6 @@ body {
     background-size: auto 100%;
     font-weight: 900;
     box-sizing: border-box;
-    padding-left: 45px;
 }
 
 .Bt {
@@ -71,14 +76,14 @@ body {
     margin-top: 10px;
 }
 
-.Bt:hover {
-    background-color: rgb(254 250 200);
-}
+    .Bt:hover {
+        background-color: rgb(254 250 200);
+    }
 
 
 .cardTable {
     margin: auto;
-    width: 95%;
+    width: 100%;
     max-width: 550px;
     border-radius: 10px;
     background-color: white;
@@ -89,7 +94,7 @@ body {
 }
 
 
-#ErrorMsg,#ErrorMsgLogin {
+#ErrorMsg, #ErrorMsgLogin {
     color: indianred;
     margin: 10px;
     font-weight: 600;
@@ -104,7 +109,6 @@ body {
 
 table {
     border: 3px solid rgb(227 216 135 / 21%);
-    font-family: arial, sans-serif;
     border-collapse: collapse;
     max-width: 500px;
     width: 95%;
@@ -119,11 +123,11 @@ th {
     border-bottom: 1px solid rgb(227 216 135 / 45%);
     margin: 1px 0;
     text-align: right;
-    padding: 12px 10px 9px 0;
+    padding: 9px 10px 9px 0;
     table-layout: fixed;
     word-wrap: break-word;
     font-size: 18px;
-    font-family: 'Rubik', sans-serif;
+
 }
 
 th {
@@ -140,13 +144,13 @@ tr:nth-child(even) {
 
 
 .key {
-    font-weight: 600;
+    font-weight: bold;
 }
 
 #resetInputNumber {
     position: absolute;
     width: 30px;
-    right: 30px;
+    right: 34px;
     cursor: pointer;
     opacity: 0.6;
     display: none;
@@ -167,7 +171,6 @@ tr:nth-child(even) {
     max-width: 550px;
     margin: auto;
     direction: rtl;
-
 }
 
 .scooll {
@@ -200,15 +203,15 @@ tr:nth-child(even) {
     justify-content: flex-end;
 }
 
-.btadduser:hover {
-    background-color: rgb(254 250 200);
-}
+    .btadduser:hover {
+        background-color: rgb(254 250 200);
+    }
 
 
-.btadduser img {
-    width: 30px;
-    padding-left: 10px;
-}
+    .btadduser img {
+        width: 30px;
+        padding-left: 10px;
+    }
 
 .cardfixed {
     position: fixed;
@@ -262,9 +265,10 @@ tr:nth-child(even) {
     -webkit-appearance: none;
     margin: 10px;
 }
-#submitLogin:active{
-background-color: whitesmoke;
-}
+
+    #submitLogin:active {
+        background-color: whitesmoke;
+    }
 
 #cardfixedhide {
     width: 40px;
@@ -274,7 +278,7 @@ background-color: whitesmoke;
     right: 5px;
 }
 
-#resetInputtellogin,#resetInputpasslogin{
+#resetInputtellogin, #resetInputpasslogin {
     position: absolute;
     width: 30px;
     right: 10px;
@@ -284,27 +288,108 @@ background-color: whitesmoke;
 }
 
 
-@media only screen and (max-width:900px) {}
+
+
+.popup {
+    background: #dcd391;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    margin-right: 7px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: large;
+    cursor: pointer;
+    position: relative;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-weight: bold;
+}
+
+    .popup .popuptext {
+        visibility: hidden;
+        width: 160px;
+        background-color: #f2edc9;
+        color: #555;
+        text-align: center;
+        border-radius: 6px;
+        padding: 6px 19px;
+        position: absolute;
+        z-index: 1;
+        bottom: 27px;
+        left: -88px;
+        font-size: 16px;
+    }
+
+        .popup .popuptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+.popupOpen .popuptext {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 0.5s;
+}
+
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+body:hover, body:active {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-user-select: none;
+    -webkit-touch-callout: none /*only to disable context menu on long press*/
+}
+
+
+
+
+@media only screen and (max-width:900px) {
+}
 
 
 
 ::-webkit-scrollbar {
-  width: 15px;
+    width: 7px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px white; 
-  border-radius: 5px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgb(197 197 197); 
-  border-radius: 6px;
+    box-shadow: inset 0 0 5px white;
+    border-radius: 5px;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(197 197 197); 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(197 197 197);
+    border-radius: 6px;
 }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgb(197 197 197);
+    }
+
+

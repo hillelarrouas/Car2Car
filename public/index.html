@@ -17,18 +17,19 @@
     <meta name="msapplication-square150x150logo" content="img/logo/Logo_150.png" />
     <meta name="msapplication-wide310x150logo" content="img/logo/Logo_310.png" />
     <meta name="msapplication-square310x310logo" content="img/logo/Logo_310X150.png" />
+    <link rel="manifest" href="/manifest.json" />
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?4">
     <link rel="shortcut icon" href="/img/logo1.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Assistant:400,600,700&display=swap&subset=hebrew"
-        rel="stylesheet">
+          rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body onload="init()" dir="rtl">
 
+<body onload="init()" dir="rtl" ontouchmove>
 
     <div class="Welcom">
         <div class="logo"><img src="img/logo1.png" alt="logo"></div>
@@ -36,145 +37,35 @@
         <div dir="ltr" style="text-align: center;position: relative; margin: auto; width: 90%; max-width: 350px;">
             <img id='resetInputNumber' src="img/icon x.png" alt="x">
             <input id="WelcomCarNumber" dir="ltr" maxlength="10" type="tel" oninput="ArrangeCarNumber()"
-                onkeyup="if (event.keyCode == 13) { event.preventDefault();CheckCar()}" autocomplete="off" />
-            <input value="המשך" id="WelcomBt" type="button" class="Bt" onclick="CheckCar()">
+                   onkeyup="if (event.keyCode == 13) { event.preventDefault();CheckCar()}" autocomplete="off" />
+            <input value="המשך" id="WelcomBt" type="button" class="Bt clickBt" onclick="CheckCar()">
             <div id="WelcomWait"><img style="width: 45px;" src="img/gifSearch.gif" alt="Search"></div>
             <div id="ErrorMsg"></div>
-            <!-- <hr style="border: 1px solid #e3d887;" /> -->
 
-            <button class="btadduser" onclick="GetSearchHistory('GetHistory')">הסטוריית חיפוש<img src="img/Entrance.png"
-                    alt="icon"></button>
-            <!-- <button class="btadduser" onclick="addUser()">רישום משתמש חדש<img src="img/adduser.png" alt="icon"></button> -->
-        </div>
-
-        <script>
-            var TopElement = []
-            function ShowOnTop(ElementId) {
-                for (var i = 0; i < TopElement.length; i++) {
-                    if (TopElement[i] == ElementId) { TopElement.splice(i, 1); continue; }
-                }
-                TopElement.unshift(ElementId)
-                for (var i = 0; i < TopElement.length; i++) {
-                    $('#' + TopElement[i]).css('z-index', (888 - i));
-                }
-                $('#' + ElementId).show(150)
-            }
-
-
-
-            function GetSearchHistory(Action, Data) {
-                let StorageSearchHistory = JSON.parse(localStorage.getItem('SearchHistory'))
-                console.log(StorageSearchHistory)
-                switch (Action) {
-                    case 'GetHistory':
-                        $('#BtDeleteAllHistory').show()
-                        let datahtml = ''
-                        if (StorageSearchHistory.length == 0) {
-                            datahtml = `<div style="direction: rtl;padding: 0px 0 20px;font-weight: 600;font-size: 19px;color: #463808;">אין לך כלום בהסטוריה..</div>`
-                            $('#BtDeleteAllHistory').hide()
-                        }
-                        StorageSearchHistory.forEach(element => {
-                            datahtml += `<div style="padding: 5px; margin: 10px;background: beige;box-sizing: border-box;border-radius: 5px;">
-                            <div onclick='SearchCar("${element.mispar_rechev}")' style="width: min-content;padding: 0 10px;margin:0 auto 3px;border-radius:5px;background:#ebebeb96;cursor: pointer;color:#6f5a0c;font-weight: bold;font-size:20px">${element.mispar_rechev}</div>
-                            <div>${element.shnat_yitzur} | ${element.kinuy_mishari} | ${element.tozeret_nm}</div>
-                            <hr style="border: 1px solid #a7891e36;margin: 4px auto;width: 62%;">
-                            <div>${element.Date}</div></div>`
-                        });
-                        $('#cardHistory').html(datahtml)
-                        ShowOnTop('WindowAllHistory')
-                        break;
-
-                    case 'DeleteAll':
-                        Swal.fire({
-                            title: 'שים לב!',
-                            text: 'ההסטוריה תימחק ולא ניתן לשחזר',
-                            icon: 'warning',
-                            iconColor: '#a7891e',
-                            showCancelButton: true,
-                            cancelButtonText: 'לא למחוק',
-                            cancelButtonColor:'#a67100',
-                            confirmButtonText: 'למחוק',
-                            confirmButtonColor:'#545454',
-                            focusCancel: true
-                        }).then(res => {
-                            if (res.isConfirmed == true) {
-                                StorageSearchHistory = [Data, ...StorageSearchHistory]
-                                localStorage.setItem('SearchHistory', '[]');
-                                $('#WindowAllHistory').hide()
-                            }
-                        })
-                        break;
-                    case 'AddHistory':
-                        StorageSearchHistory = [Data, ...StorageSearchHistory]
-                        localStorage.setItem('SearchHistory', JSON.stringify(StorageSearchHistory));
-                        break;
-
-                    default:
-                        return ''
-                }
-            }
-
-
-
-            function SearchCar(Car) {
-                $("#WindowAllHistory").hide()
-                $("#WelcomCarNumber").val(Car)
-                ArrangeCarNumber()
-                CheckCar()
-            }
-        </script>
-
-
-
-
-        <!-- <div id='cardmesadduser' style="height: 0;width: 92%;max-width:480px ; margin:30px auto;font-size: large;background-color: #fefadc;border-radius: 5px;transition: height 0.2s;overflow: hidden;">
-            <div style="padding: 15px;">
-            לרישום רכבך, ניתן לפנות לחבר שכבר רשום במאגר או להרשם באמצעות שליחת סרטון ווידאו.<br/><br/>
-            <b>לרישום ע״י חבר:</b><br/>
-            יש להכנס כמשתמש רשום > תפריט ראשי > צירוף חבר למאגר. שם יש להזין מספר רכב ומספר טלפון של בעל הרכב.<br/><br/>
-            <b>לרישום ע״י סרטון:</b><br/>
-            יש לצלם ווידאו קצר באמצעות מצלמת הסלפי. הסרטון צריך להתחיל כשהנך עומד עם הגב אל הרכב, כך שיראו גם אותך וגם את לוחית הרישוי, ולאחר מכן להתיישב בכסא הנהג מבלי שהרכב ייצא מזווית הצילום.<br/>
-            את הסרטון יש לשלוח למוקד הוואטסאפ שלנו.<br/>
-            בתוך כמה דקות, תקבל עדכון באמצעות sms לטלפון ממנו נשלח הסרטון על הצטרפותך למאגר.<br/><br/>
-            <a href="https://wa.me/message/H6SMI363YT5XA1" style="color: black;">לחץ כאן למעבר לווטסאפ.</a><br/>
-            <a href="" style="color: black;">לחץ כאן לסרטון הדגמה.</a><br/>
-        </div>
-        </div> -->
-    </div>
-
-    
-    <div id="WindowAllHistory"
-    style="overflow-y: auto;display: none;text-align: center;position: fixed;right: 0;top: 0;width: 100%;height: 100%;background-color: rgba(169, 169, 169, 0.37)">
-    <div style="width: 30%;"></div>
-    <div
-        style="direction: ltr;padding: 48px 1px 1px;margin: 16px auto;width: 500px;background: white;border-radius: 7px;position: relative;">
-        <div onclick="$('#WindowAllHistory').hide()"
-            style="cursor: pointer;position: absolute;top: 10px;right: 10px;background: #a7891e;color: white;width: 35px;height: 35px;display: flex;justify-content: center;align-items: center;font-weight: bold;font-size: 22px;border-radius: 7px;">
-            X</div>
-        <div onclick="GetSearchHistory('DeleteAll')" id="BtDeleteAllHistory"
-            style="cursor: pointer;position: absolute;top: 10px;background: #a7891e;color: white;font-weight: bold;border-radius: 4px;left: 10px;font-size: 15px;padding: 3px 9px;">
-            מחק הסטוריה</div>
-        <div id="cardHistory">
-
+            <button class="btadduser" onclick="GetSearchHistory('GetHistory')">הסטוריית חיפוש<img src="img/history.png" alt="history"></button>
         </div>
     </div>
-</div>
+
+
+
+
 
     <div class="cardTable">
-        <div style="position: sticky;top: 0;background-color: #ffffffe6;border-radius: 10px;">
-            <div style="position: absolute;right: 10px;top: 10px;"><img id="reternWelcom" src="img/return.png"
-                    alt="חזרה"></div>
+        <div style="position: sticky;top: 0;background-color: #ffffffe6;border-radius: 10px;z-index: 3;">
+            <div style="position: absolute;right: 10px;top: 10px;">
+                <img id="reternWelcom" src="img/return.png"
+                     alt="חזרה">
+            </div>
             <div class="logo"><img style="height: 80px;" src="img/logo1.png" alt="logo"></div>
         </div>
 
         <div class="addTable"></div>
         <div style="width: 100%;position: fixed;left: 0;bottom: 0;">
             <div class="scooll">
-                <img style="width: 45px; margin: 0 15px 15px 0; cursor: pointer;" src="img/scroll.png" alt="למעלה"
-                    onclick="$('html, body').animate({ scrollTop: 0 }, 250);">
             </div>
         </div>
     </div>
+
 
 
 
@@ -184,15 +75,13 @@
             <img id="cardfixedhide" src="img/icon x.png" alt="X">
             <div style="padding:15px 0 20px;font-size: larger;font-weight: 700;">כניסה לאיזור האישי</div>
             <div style="width: 90%; max-width: 270px;margin: auto;position: relative;">
-                <img id='resetInputtellogin' src="img/icon x.png" alt="x" onclick="$('#inputTelLogin').val('')">
+                <img id='resetInputtellogin' src="img/icon x.png" alt="x" onclick="$('#inputTelLogin').val(''),$('#inputTelLogin').focus()">
                 <div style="text-align: right;font-weight: 600;" autocomplete="off">הזן מספר טלפון:</div>
-                <input id='inputTelLogin' type="tel" onkeyup="if (event.keyCode == 13) { $('#submitLogin').click() }"
-                    maxlength="11">
+                <input id='inputTelLogin' type="tel" onkeyup="if (event.keyCode == 13) { $('#submitLogin').click() }" maxlength="11">
                 <div class="cardPass" style="display: none;position: relative;">
-                    <img id='resetInputpasslogin' src="img/icon x.png" alt="x" onclick="$('#inputPassLogin').val('')">
+                    <img id='resetInputpasslogin' src="img/icon x.png" alt="x" onclick="$('#inputPassLogin').val(''),$('#inputPassLogin').focus()">
                     <div style="text-align: right; font-weight: 600;">הזן סיסמה:</div>
-                    <input id="inputPassLogin" type="password" autocomplete="off"
-                        onkeyup="if (event.keyCode == 13) { $('#submitLogin').click() }" maxlength='6' />
+                    <input id="inputPassLogin" type="password" autocomplete="off" onkeyup="if (event.keyCode == 13) { $('#submitLogin').click() }" maxlength='6' />
                 </div>
                 <button id="submitLogin">אישור</button>
                 <div id="ErrorMsgLogin" style="margin:0 0 5px;"></div>
@@ -202,7 +91,29 @@
 
 
 
-    <script src="script.js?2"></script>
+    <div id="WindowAllHistory"
+         style="overflow-y: auto;display: none;text-align: center;position: fixed;right: 0;top: 0;width: 100%;height: 100%;background-color: rgba(169, 169, 169, 0.37)">
+        <div style="width: 30%;"></div>
+        <div style="direction: ltr;width: 96%;padding: 48px 1px 1px;margin: 16px auto;max-width: 500px;background: white;border-radius: 7px;position: relative;">
+            <div onclick="$('#WindowAllHistory').hide()"
+                 style="cursor: pointer;position: absolute;top: 10px;right: 10px;background: #a7891e;color: white;width: 35px;height: 35px;display: flex;justify-content: center;align-items: center;font-weight: bold;font-size: 22px;border-radius: 7px;">
+                X
+            </div>
+            <div onclick="GetSearchHistory('DeleteAll')" id="BtDeleteAllHistory"
+                 style="cursor: pointer;position: absolute;top: 10px;background: #a7891e;color: white;font-weight: 600;border-radius: 4px;left: 10px;font-size: 15px;padding: 3px 9px;">
+                מחק הסטוריה
+            </div>
+            <div id="cardHistory">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?3"></script>
 </body>
 
 </html>
+
+
+
+
+
